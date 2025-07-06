@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Wanderling.Infrastructure.Entities;
+using Wanderling.Domain.Entities.Collections.Plants;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Wanderling.Infrastructure.Data
 {
-    internal class AppDbContext
+    public class AppDbContext : IdentityDbContext<UserEntity, IdentityRole<Guid>, Guid>
     {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        
+        public DbSet<Plant> Plants {  get; set; }
     }
 }

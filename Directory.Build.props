@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <EFDefaultProject>Wanderling.Infrastructure</EFDefaultProject>
+    <EFStartupProject>Wanderling.Api</EFStartupProject>
+  </PropertyGroup>
+</Project>
