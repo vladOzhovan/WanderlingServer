@@ -3,10 +3,10 @@ using Wanderling.Domain.Interfaces;
 
 namespace Wanderling.Domain.Entities.Collections.Plants
 {
-    [OrganismMetadata("grass")]
+    [PlantMetadata("grass")]
     public class Grass : Plant
     {
-        public Grass(IReproductionStrategy strategy) : base(strategy)
+        public Grass(string name, IReproduction reproduction) : base(name, reproduction)
         {
         }
 

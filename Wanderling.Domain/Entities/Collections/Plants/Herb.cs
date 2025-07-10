@@ -4,10 +4,10 @@ using Wanderling.Domain.Strategies;
 
 namespace Wanderling.Domain.Entities.Collections.Plants
 {
-    [OrganismMetadata("herb", typeof(SeedReproduction)]
+    [PlantMetadata("herb")]
     public class Herb : Plant
     {
-        public Herb(IReproductionStrategy strategy) : base(strategy)
+        public Herb(string name, IReproduction reproduction) : base(name, reproduction)
         {
         }
 

@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
-using Wanderling.Infrastructure.Data;
 using Wanderling.Api.DependencyInjection;
+using Wanderling.Infrastructure.Data;
 using Wanderling.Infrastructure.Entities;
+using Wanderling.Infrastructure.Startup;
 
 namespace Wanderling.Api
 {

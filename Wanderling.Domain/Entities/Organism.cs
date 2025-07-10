@@ -4,9 +4,9 @@ namespace Wanderling.Domain.Entities
 {
     public abstract class Organism : IOrganism
     {
-        private readonly IReproductionStrategy _strategy;
+        private readonly IReproduction _strategy;
 
-        protected Organism(IReproductionStrategy strategy)
+        protected Organism(IReproduction strategy)
         {
             _strategy = strategy;
         }

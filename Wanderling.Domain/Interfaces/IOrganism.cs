@@ -2,13 +2,15 @@
 {
     public interface IOrganism
     {
-        Guid Id { get; set; }
-        string Name { get; set; }
-        DateTime CreatedAt { get; set; }
-        DateTime DiscoveryDate { get; set; }
+        Guid Id { get; }
+        string Name { get; }
+        bool IsDiscovered { get; }
+        DateTime CreatedAt { get; }
+        DateTime DiscoveryDate { get; }
 
         void Born();
         void Grow();
         void Die();
+        void Discover();
     }
 }

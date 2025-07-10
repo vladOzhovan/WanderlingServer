@@ -1,0 +1,66 @@
+Solution Wanderling.Api/
+— Wanderling.Api
+   — Controllers/
+
+   — DependencyInjection/
+      - ServiceCollectionExtensions.cs
+
+   — Dtos/
+
+   - appsettings.Development.json
+   - Program.cs
+
+— Wanderling.Application/
+   — Interfaces/
+   — Services/
+
+— Wanderling.Domain/
+   — Attributes/
+      - OrganismMetadataAttribute.cs
+
+   — Entities/
+      — Collections/
+         — Funguses/
+         — Plants/
+             - DeciduousTree.cs
+             - Flower.cs
+             - Grass.cs
+             - Herb.cs
+             - Plant.cs
+
+      - Organism.cs
+      - User.cs
+
+   — Enums/
+      - PlantType.cs
+
+   — Interfaces/
+      - IOrganism.cs
+      - IOrganismFactory.cs
+      - IReproductionStrategy.cs
+
+   — Reproduction/
+      - SeedReproduction.cs 
+      - SexualReproduction.cs
+      - SporeReproduction.cs
+
+— Wanderling.Infrastructure/
+   — Configuration/
+      - OrganismConfig.cs
+      - OrganismConfigLoader.cs
+
+   — Data/
+      - AppDbContext.cs
+      - AppDbContextFactory.cs
+
+   — Entities/
+      - UserEntity.cs
+
+   — Factories/
+      - DynamicOrganismFactory.cs
+
+   — Resources/
+      - organisms.json
+
+   — Startup/
+      - OrganismRegistryBuilder.cs

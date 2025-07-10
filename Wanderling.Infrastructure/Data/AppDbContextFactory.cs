@@ -1,21 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using Wanderling.Infrastructure.Data;
 
-public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
+namespace Wanderling.Infrastructure.Data
 {
-    public AppDbContext CreateDbContext(string[] args)
+    public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
-        var configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile($"C:\\Development_2025\\WanderlingServer\\Wanderling.Api\\appsettings.Development.json", optional: false)
+        public AppDbContext CreateDbContext(string[] args)
+        {
+            var basePath = Path.Combine(Directory.GetCurrentDirectory(), "..", "Wanderling.Api");
+
+            var configuration = new ConfigurationBuilder()
+            .SetBasePath(basePath)
+            .AddJsonFile("appsettings.Development.json", optional: false)
             .Build();
 
-        var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-        optionsBuilder.UseSqlite(configuration.GetConnectionString("SqliteConnection"),
-            b => b.MigrationsAssembly("Wanderling.Infrastructure"));
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            optionsBuilder.UseSqlite(configuration.GetConnectionString("SqliteConnection"),
+                b => b.MigrationsAssembly("Wanderling.Infrastructure"));
 
-        return new AppDbContext(optionsBuilder.Options);
+            return new AppDbContext(optionsBuilder.Options);
+        }
     }
 }

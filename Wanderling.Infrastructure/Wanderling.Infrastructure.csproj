@@ -19,14 +19,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\organisms.json">
+    <Folder Include="Startup\" />
+    <None Update="Resources\plantsReg.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Folder Include="Configuration\" />
     <Folder Include="Services\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Wanderling.Application\Wanderling.Application.csproj" />
     <ProjectReference Include="..\Wanderling.Domain\Wanderling.Domain.csproj" />
   </ItemGroup>
 

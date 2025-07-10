@@ -5,11 +5,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using Wanderling.Domain.Interfaces;
 using Wanderling.Domain.Strategies;
-using Wanderling.Infrastructure.Configuration;
 using Wanderling.Infrastructure.Data;
 using Wanderling.Infrastructure.Entities;
-using Wanderling.Infrastructure.Factories;
-using Wanderling.Infrastructure.Startup;
+
 
 namespace Wanderling.Api.DependencyInjection
 {
@@ -64,9 +62,9 @@ namespace Wanderling.Api.DependencyInjection
                 return new OrganismRegistryBuilder(configs);
             });
 
-            services.AddTransient<IReproductionStrategy, SeedReproduction>();
-            services.AddTransient<IReproductionStrategy, SexualReproduction>();
-            services.AddTransient<IReproductionStrategy, SporeReproduction>();
+            services.AddTransient<IReproduction, SeedReproduction>();
+            services.AddTransient<IReproduction, SexualReproduction>();
+            services.AddTransient<IReproduction, SporeReproduction>();
 
             services.AddControllers();
             services.AddEndpointsApiExplorer();

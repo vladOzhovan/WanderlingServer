@@ -2,7 +2,7 @@
 
 namespace Wanderling.Domain.Strategies
 {
-    public class SexualReproduction : IReproductionStrategy
+    public class SexualReproduction : IReproduction
     {
         public void Reproduce(IOrganism organism)
         {

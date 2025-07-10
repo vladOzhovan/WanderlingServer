@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Wanderling.Infrastructure\Wanderling.Infrastructure.csproj" />
   </ItemGroup>
 

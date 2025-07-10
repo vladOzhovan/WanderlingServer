@@ -1,6 +1,6 @@
 ﻿namespace Wanderling.Domain.Interfaces
 {
-    public interface IReproductionStrategy
+    public interface IReproduction
     {
         void Reproduce(IOrganism organism);
     }
