@@ -3,10 +3,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using Wanderling.Application.Interfaces;
+using Wanderling.Application.Services;
 using Wanderling.Domain.Interfaces;
 using Wanderling.Domain.Strategies;
 using Wanderling.Infrastructure.Data;
 using Wanderling.Infrastructure.Entities;
+using Wanderling.Infrastructure.Factories;
 
 
 namespace Wanderling.Api.DependencyInjection
@@ -19,7 +22,7 @@ namespace Wanderling.Api.DependencyInjection
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlite(connectionString));
 
-            services.AddIdentity<UserEntity, IdentityRole>(options =>
+            services.AddIdentity<UserEntity, IdentityRole<Guid>>(options =>
             {
                 options.Password.RequiredLength = 5;
                 options.Password.RequireDigit = false;
@@ -50,21 +53,11 @@ namespace Wanderling.Api.DependencyInjection
                 };
             });
 
-            services.AddSingleton<IOrganismFactory, DynamicOrganismFactory>(serviceProvider =>
-            {
-                var configs = OrganismConfigLoader.LoadFromFile("Resources/organisms.json");
-                return new DynamicOrganismFactory(configs, serviceProvider);
-            });
-
-            services.AddSingleton<OrganismRegistryBuilder>(sp =>
-            {
-                var configs = OrganismConfigLoader.LoadFromFile("Resources/organisms.json");
-                return new OrganismRegistryBuilder(configs);
-            });
-
-            services.AddTransient<IReproduction, SeedReproduction>();
-            services.AddTransient<IReproduction, SexualReproduction>();
-            services.AddTransient<IReproduction, SporeReproduction>();
+            services.AddScoped<IReproduction, SeedReproduction>();
+            services.AddScoped<IReproduction, SexualReproduction>();
+            services.AddScoped<IReproduction, SporeReproduction>();
+            services.AddScoped<IPlantCreationService, PlantCreationService>();
+            services.AddScoped<IOrganismFactory, PlantFactory>();
 
             services.AddControllers();
             services.AddEndpointsApiExplorer();

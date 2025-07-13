@@ -8,7 +8,7 @@
         
         public abstract void Born();
         public abstract void Grow();
-        public abstract void Reproduce();
         public abstract void Die();
+        public abstract void Reproduce();
     }
 }

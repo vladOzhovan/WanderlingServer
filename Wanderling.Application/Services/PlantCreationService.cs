@@ -1,7 +1,7 @@
-﻿using Wanderling.Application.Interfaces;
-using Wanderling.Application.Models;
-using Wanderling.Domain.Interfaces;
+﻿using Wanderling.Domain.Interfaces;
 using Wanderling.Domain.Strategies;
+using Wanderling.Application.Models;
+using Wanderling.Application.Interfaces;
 
 namespace Wanderling.Application.Services
 {

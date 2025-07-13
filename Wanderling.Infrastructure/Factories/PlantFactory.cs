@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
-using Wanderling.Application.Interfaces;
 using Wanderling.Domain.Attributes;
-using Wanderling.Domain.Entities.Collections.Plants;
 using Wanderling.Domain.Interfaces;
+using Wanderling.Application.Interfaces;
+using Wanderling.Domain.Entities.Collections.Plants;
 
 namespace Wanderling.Infrastructure.Factories
 {
@@ -29,9 +29,7 @@ namespace Wanderling.Infrastructure.Factories
 
         public IOrganism Create(string name, string typeName, IReproduction reproduction)
         {
-            var key = typeName.ToLower();
-
-            if (!_plantRegistry.TryGetValue(key, out var type))
+            if (!_plantRegistry.TryGetValue(typeName.ToLower(), out var type))
                 throw new ArgumentException($"Unknown plant type: {typeName}");
 
             try

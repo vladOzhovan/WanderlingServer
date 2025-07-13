@@ -4,25 +4,41 @@ namespace Wanderling.Domain.Entities
 {
     public abstract class Organism : IOrganism
     {
-        private readonly IReproduction _strategy;
+        private readonly IReproduction _reproduction;
 
-        protected Organism(IReproduction strategy)
+        protected Organism(string name, IReproduction reproduction)
         {
-            _strategy = strategy;
+            Name = name;
+            _reproduction = reproduction;
+            CreatedAt = DateTime.UtcNow;
         }
 
         public Guid Id { get; set; }
+        public Guid UserId {  get; private set; }
         public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
-        public DateTime DiscoveryDate { get; set; }
+        public bool IsDiscovered { get; private set; } = false;
+        public DateTime DiscoverededAt { get; private set; }
+
 
         public abstract void Born();
         public abstract void Grow();
         public abstract void Die();
 
+        public void Discover(Guid userId)
+        {
+            if (!IsDiscovered)
+            {
+                IsDiscovered = true;
+                DiscoverededAt = DateTime.UtcNow;
+                UserId = userId;
+            }
+        }
+
         public void Reproduce()
         {
-            _strategy.Reproduce(this);
+            _reproduction.Reproduce(this);
         }
     }
 }

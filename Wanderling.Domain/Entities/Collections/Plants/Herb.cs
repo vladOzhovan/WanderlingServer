@@ -1,6 +1,5 @@
 ﻿using Wanderling.Domain.Attributes;
 using Wanderling.Domain.Interfaces;
-using Wanderling.Domain.Strategies;
 
 namespace Wanderling.Domain.Entities.Collections.Plants
 {

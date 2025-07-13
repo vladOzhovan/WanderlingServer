@@ -1,22 +1,33 @@
 Solution Wanderling.Api/
 — Wanderling.Api
    — Controllers/
+      - PlantsController.cs
 
    — DependencyInjection/
       - ServiceCollectionExtensions.cs
 
    — Dtos/
+      - PlantCreateDto.cs
 
    - appsettings.Development.json
    - Program.cs
 
 — Wanderling.Application/
    — Interfaces/
+      - IOrganismFactory.cs
+      - IPlantCreationService.cs
+      - IPlantRepository.cs
+
+   – Models/
+      - PlantCreateModel.cs
+      - PlantModel.cs
+
    — Services/
+      - PlantCreationService.cs
 
 — Wanderling.Domain/
    — Attributes/
-      - OrganismMetadataAttribute.cs
+      - PlantMetadataAttribute.cs
 
    — Entities/
       — Collections/
@@ -36,7 +47,6 @@ Solution Wanderling.Api/
 
    — Interfaces/
       - IOrganism.cs
-      - IOrganismFactory.cs
       - IReproductionStrategy.cs
 
    — Reproduction/
@@ -46,21 +56,29 @@ Solution Wanderling.Api/
 
 — Wanderling.Infrastructure/
    — Configuration/
-      - OrganismConfig.cs
-      - OrganismConfigLoader.cs
 
    — Data/
       - AppDbContext.cs
       - AppDbContextFactory.cs
 
    — Entities/
+      - PlantEntity.cs
       - UserEntity.cs
 
    — Factories/
-      - DynamicOrganismFactory.cs
+      - PlantFactory.cs
+
+   – Mappers/
+      - PlantMapper.cs
+      - UserMapper.cs
+
+   – Migrations/
+
+   – Repositories/
+      - PlantRepository.cs
 
    — Resources/
-      - organisms.json
+      - plantsReg.json
 
    — Startup/
       - OrganismRegistryBuilder.cs

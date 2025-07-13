@@ -3,14 +3,16 @@
     public interface IOrganism
     {
         Guid Id { get; }
+        Guid UserId { get; }
         string Name { get; }
-        bool IsDiscovered { get; }
+        string Description { get; }
+        public bool IsDiscovered { get; }
+        DateTime DiscoverededAt { get; }
         DateTime CreatedAt { get; }
-        DateTime DiscoveryDate { get; }
 
         void Born();
         void Grow();
         void Die();
-        void Discover();
+        void Discover(Guid userId);
     }
 }
