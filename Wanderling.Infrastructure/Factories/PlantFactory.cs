@@ -14,7 +14,7 @@ namespace Wanderling.Infrastructure.Factories
         {
             _plantRegistry = Assembly.GetAssembly(typeof(Plant))!
                 .GetTypes()
-                .Where(t => t.IsSubclassOf(typeof(Plant)) && !t.IsAbstract)
+                .Where(t => t.IsSubclassOf(typeof(Type)) && !t.IsAbstract)
                 .Select(t => new
                 {
                     Type = t,

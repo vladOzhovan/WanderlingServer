@@ -8,15 +8,17 @@ namespace Wanderling.Domain.Entities
 
         protected Organism(string name, IReproduction reproduction)
         {
+            Id = Guid.NewGuid();
             Name = name;
             _reproduction = reproduction;
             CreatedAt = DateTime.UtcNow;
         }
 
-        public Guid Id { get; set; }
-        public Guid UserId {  get; private set; }
+        public Guid Id { get; }
+        public Guid? UserId {  get; private set; }
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
+        public string Reproduction => _reproduction.GetType().Name;
         public DateTime CreatedAt { get; set; }
         public bool IsDiscovered { get; private set; } = false;
         public DateTime DiscoverededAt { get; private set; }

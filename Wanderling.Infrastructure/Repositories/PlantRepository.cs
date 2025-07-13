@@ -24,7 +24,7 @@ namespace Wanderling.Infrastructure.Repositories
 
         public async Task AddAsync(PlantModel model)
         {
-            await _context.AddAsync(model);
+            await _context.Plants.AddAsync(model.ToEntity());
             await _context.SaveChangesAsync();
         }
     }

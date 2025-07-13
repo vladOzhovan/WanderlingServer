@@ -73,12 +73,12 @@ Solution Wanderling.Api/
       - UserMapper.cs
 
    – Migrations/
+      - (some migration files)
 
    – Repositories/
       - PlantRepository.cs
 
    — Resources/
-      - plantsReg.json
+      - plantsReg.json(now empty)
 
-   — Startup/
-      - OrganismRegistryBuilder.cs
+

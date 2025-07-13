@@ -3,12 +3,13 @@
     public interface IOrganism
     {
         Guid Id { get; }
-        Guid UserId { get; }
+        Guid? UserId { get; }
         string Name { get; }
         string Description { get; }
+        string Reproduction { get; }
         public bool IsDiscovered { get; }
-        DateTime DiscoverededAt { get; }
         DateTime CreatedAt { get; }
+        DateTime DiscoverededAt { get; }
 
         void Born();
         void Grow();

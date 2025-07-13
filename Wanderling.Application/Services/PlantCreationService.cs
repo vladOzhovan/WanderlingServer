@@ -1,19 +1,22 @@
-﻿using Wanderling.Domain.Interfaces;
-using Wanderling.Domain.Strategies;
+﻿using Wanderling.Application.Interfaces;
+using Wanderling.Application.Mappers;
 using Wanderling.Application.Models;
-using Wanderling.Application.Interfaces;
+using Wanderling.Domain.Interfaces;
+using Wanderling.Domain.Strategies;
 
 namespace Wanderling.Application.Services
 {
     public class PlantCreationService : IPlantCreationService
     {
         private readonly IOrganismFactory _factory;
-        public PlantCreationService(IOrganismFactory factory)
+        private readonly IPlantRepository _repository;
+        public PlantCreationService(IOrganismFactory factory, IPlantRepository repository)
         {
             _factory = factory;
+            _repository = repository;
         }
 
-        public Task<IOrganism> CreatePlantAsync(PlantCreateModel model)
+        public async Task<IOrganism> CreatePlantAsync(PlantCreateModel model)
         {
             IReproduction reproduction = model.ReproductionKey.ToLower() switch
             {
@@ -24,8 +27,8 @@ namespace Wanderling.Application.Services
             };
 
             var plant = _factory.Create(model.Name, model.TypeKey, reproduction);
-            
-            return Task.FromResult(plant);
+            await _repository.AddAsync(plant.ToModel());
+            return await Task.FromResult(plant);
         }
     }
 }

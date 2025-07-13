@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Startup\**" />
+    <EmbeddedResource Remove="Startup\**" />
+    <None Remove="Startup\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.17" />
@@ -19,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Startup\" />
     <None Update="Resources\plantsReg.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

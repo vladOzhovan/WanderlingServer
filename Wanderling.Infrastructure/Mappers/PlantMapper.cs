@@ -1,4 +1,7 @@
-﻿using Wanderling.Application.Models;
+﻿using System.Reflection;
+using Wanderling.Application.Models;
+using Wanderling.Domain.Attributes;
+using Wanderling.Domain.Interfaces;
 using Wanderling.Infrastructure.Entities;
 
 namespace Wanderling.Infrastructure.Mappers
