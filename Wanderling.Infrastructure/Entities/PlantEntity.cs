@@ -1,4 +1,6 @@
-﻿namespace Wanderling.Infrastructure.Entities
+﻿using Wanderling.Domain.Entities;
+
+namespace Wanderling.Infrastructure.Entities
 {
     public class PlantEntity
     {
@@ -8,5 +10,6 @@
         public string Type { get; set; } = null!;
         public string Reproduction { get; set; } = null!;
         public DateTime CreatedAt { get; set; }
+        public List<PlantEffect> Effects { get; set; } = new();
     }
 }

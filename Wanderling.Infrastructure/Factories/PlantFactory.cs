@@ -3,15 +3,20 @@ using Wanderling.Domain.Attributes;
 using Wanderling.Domain.Interfaces;
 using Wanderling.Application.Interfaces;
 using Wanderling.Domain.Entities.Collections.Plants;
+using Wanderling.Infrastructure.Resources;
 
 namespace Wanderling.Infrastructure.Factories
 {
     public class PlantFactory : IOrganismFactory
     {
         private readonly IDictionary<string, Type> _plantRegistry;
+        private readonly IList<PlantDefinition> _definitions;
+        private readonly string _plantJsonPath;
 
-        public PlantFactory()
+        public PlantFactory(string plantJsonPath)
         {
+            _plantJsonPath = plantJsonPath;
+
             _plantRegistry = Assembly.GetAssembly(typeof(Plant))!
                 .GetTypes()
                 .Where(t => t.IsSubclassOf(typeof(Type)) && !t.IsAbstract)

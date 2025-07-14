@@ -18,6 +18,9 @@ Solution Wanderling.Api/
       - IPlantCreationService.cs
       - IPlantRepository.cs
 
+   – Mappers/
+      - PlantMapper.cs
+
    – Models/
       - PlantCreateModel.cs
       - PlantModel.cs
