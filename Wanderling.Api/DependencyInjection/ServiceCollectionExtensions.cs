@@ -6,19 +6,24 @@ using System.Security.Claims;
 using Wanderling.Application.Interfaces;
 using Wanderling.Application.Services;
 using Wanderling.Domain.Interfaces;
-using Wanderling.Domain.Strategies;
+using Wanderling.Domain.Reproduction;
 using Wanderling.Infrastructure.Data;
 using Wanderling.Infrastructure.Entities;
 using Wanderling.Infrastructure.Factories;
+using Wanderling.Infrastructure.Repositories;
 
 
 namespace Wanderling.Api.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services,
+                                                           IConfiguration configuration, IWebHostEnvironment env)
         {
-            var connectionString = configuration.GetConnectionString("SqliteConnection");
+            //var connectionString = configuration.GetConnectionString("SqliteConnection");
+            
+            var dbPath = Path.Combine(env.ContentRootPath, "..", "Wanderling.Infrastructure", "Wanderlings.db");
+            var connectionString = $"Data Source={dbPath}";
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlite(connectionString));
 
@@ -54,10 +59,17 @@ namespace Wanderling.Api.DependencyInjection
             });
 
             services.AddScoped<IReproduction, SeedReproduction>();
-            services.AddScoped<IReproduction, SexualReproduction>();
+            services.AddScoped<IReproduction, VegetativeReproduction>();
             services.AddScoped<IReproduction, SporeReproduction>();
             services.AddScoped<IPlantCreationService, PlantCreationService>();
-            services.AddScoped<IOrganismFactory, PlantFactory>();
+            services.AddScoped<IPlantRepository, PlantRepository>();
+
+            var resourcePath = Path.Combine(env.ContentRootPath, "..", "Wanderling.Infrastructure", "Resources", "plantsRegister.json");
+
+            services.AddSingleton<IOrganismFactory>(sp =>
+            {
+                return new PlantFactory(resourcePath);
+            });
 
             services.AddControllers();
             services.AddEndpointsApiExplorer();

@@ -34,6 +34,19 @@ namespace Wanderling.Infrastructure.Data
 
             foreach (var type in fungusTypes)
                 modelBuilder.Ignore(type);
+
+            modelBuilder.Entity<PlantEntity>().OwnsMany(p => p.Effects, a =>
+            {
+                a.WithOwner().HasForeignKey("PlantId");
+                a.Property<int>("Id");
+                a.HasKey("Id");
+            });
+
+            //modelBuilder.Entity<PlantEntity>().OwnsMany(p => p.Effects, a =>
+            //{
+            //    a.WithOwner().HasForeignKey("PlantId");
+            //    a.HasKey("PlantId", "Key");
+            //});
         }
     }
 }

@@ -6,17 +6,18 @@ namespace Wanderling.Domain.Entities
     {
         private readonly IReproduction _reproduction;
 
-        protected Organism(string name, IReproduction reproduction)
+        protected Organism(string speciesName, IReproduction reproduction)
         {
             Id = Guid.NewGuid();
-            Name = name;
+            SpeciesName = speciesName;
             _reproduction = reproduction;
             CreatedAt = DateTime.UtcNow;
         }
 
         public Guid Id { get; }
         public Guid? UserId {  get; private set; }
-        public string Name { get; set; } = string.Empty;
+        public string SpeciesName { get; set; } = string.Empty;
+        public string DisplayedName { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Reproduction => _reproduction.GetType().Name;
         public DateTime CreatedAt { get; set; }

@@ -19,10 +19,12 @@ Solution Wanderling.Api/
       - IPlantRepository.cs
 
    – Mappers/
-      - PlantMapper.cs
+      - IOrganismMapper.cs
+      - PlantDtoMapper.cs
 
    – Models/
       - PlantCreateModel.cs
+      - PlantDto.cs
       - PlantModel.cs
 
    — Services/
@@ -36,13 +38,16 @@ Solution Wanderling.Api/
       — Collections/
          — Funguses/
          — Plants/
+             - AquaticPlant.cs
+             - ConiferousTree.cs
              - DeciduousTree.cs
              - Flower.cs
              - Grass.cs
              - Herb.cs
-             - Plant.cs
+             - Plant.cs (abstract)
 
-      - Organism.cs
+      - Organism.cs (abstract)
+      - PlantEffect.cs
       - User.cs
 
    — Enums/
@@ -54,8 +59,8 @@ Solution Wanderling.Api/
 
    — Reproduction/
       - SeedReproduction.cs 
-      - SexualReproduction.cs
       - SporeReproduction.cs
+      - VegetativeReproduction.cs
 
 — Wanderling.Infrastructure/
    — Configuration/
@@ -82,6 +87,7 @@ Solution Wanderling.Api/
       - PlantRepository.cs
 
    — Resources/
+      - PlantDefinition.cs
       - plantsReg.json(now empty)
 
 

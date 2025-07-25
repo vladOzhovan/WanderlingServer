@@ -1,6 +1,6 @@
 ﻿using Wanderling.Domain.Interfaces;
 
-namespace Wanderling.Domain.Strategies
+namespace Wanderling.Domain.Reproduction
 {
     public class SporeReproduction : IReproduction
     {

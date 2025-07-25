@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Wanderling.Application.Interfaces;
 using Wanderling.Application.Models;
 using Wanderling.Infrastructure.Data;
-using Wanderling.Application.Interfaces;
 using Wanderling.Infrastructure.Mappers;
 
 namespace Wanderling.Infrastructure.Repositories

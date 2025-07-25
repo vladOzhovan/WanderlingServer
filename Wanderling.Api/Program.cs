@@ -9,7 +9,7 @@ namespace Wanderling.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddInfrastructure(builder.Configuration);
+            builder.Services.AddInfrastructure(builder.Configuration, builder.Environment);
 
             var app = builder.Build();
 

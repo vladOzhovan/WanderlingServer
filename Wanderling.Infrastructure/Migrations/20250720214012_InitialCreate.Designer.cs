@@ -11,7 +11,7 @@ using Wanderling.Infrastructure.Data;
 namespace Wanderling.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250712212836_InitialCreate")]
+    [Migration("20250720214012_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -155,13 +155,15 @@ namespace Wanderling.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("DiscoveryDate")
+                    b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsDiscovered")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("DisplayedName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Rarity")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -169,11 +171,15 @@ namespace Wanderling.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("SpeciesName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -194,12 +200,19 @@ namespace Wanderling.Infrastructure.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("INTEGER");
@@ -223,6 +236,10 @@ namespace Wanderling.Infrastructure.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("SecondName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
@@ -295,6 +312,38 @@ namespace Wanderling.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Wanderling.Infrastructure.Entities.PlantEntity", b =>
+                {
+                    b.OwnsMany("Wanderling.Domain.Entities.PlantEffect", "Effects", b1 =>
+                        {
+                            b1.Property<Guid>("PlantEntityId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("INTEGER");
+
+                            b1.Property<int>("BaseDuration")
+                                .HasColumnType("INTEGER");
+
+                            b1.Property<double>("BaseMagnitude")
+                                .HasColumnType("REAL");
+
+                            b1.Property<string>("Key")
+                                .IsRequired()
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("PlantEntityId", "Id");
+
+                            b1.ToTable("PlantEffect");
+
+                            b1.WithOwner()
+                                .HasForeignKey("PlantEntityId");
+                        });
+
+                    b.Navigation("Effects");
                 });
 #pragma warning restore 612, 618
         }

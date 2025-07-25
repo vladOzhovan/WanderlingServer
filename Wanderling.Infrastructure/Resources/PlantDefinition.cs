@@ -1,12 +1,17 @@
-﻿namespace Wanderling.Infrastructure.Resources
+﻿using Wanderling.Domain.Entities;
+
+namespace Wanderling.Infrastructure.Resources
 {
     public class PlantDefinition
     {
-        public string TypeName { get; set; } = null!;
-        public string DisplayName { get; set; } = null!;
-        public string Description { get; set; } = null!;
-        public string Rarity { get; set; } = null!;
-        public string IconPath { get; set; } = null!;
+        public string SpeciesKey { get; set; } = string.Empty;
+        public string DisplayedName { get; set; } = string.Empty;
+        public string TypeName { get; set; } = string.Empty;
+        public string Reproduction { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string Rarity { get; set; } = string.Empty;
+        public string IconPath { get; set; } = string.Empty;
+        public List<PlantEffect> Effects { get; set; } = new();
         public List<string> Tags { get; set; } = new();
     }
 }

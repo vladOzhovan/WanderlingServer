@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using Wanderling.Application.Models;
-using Wanderling.Domain.Attributes;
-using Wanderling.Domain.Interfaces;
+﻿using Wanderling.Application.Models;
 using Wanderling.Infrastructure.Entities;
 
 namespace Wanderling.Infrastructure.Mappers
@@ -14,9 +11,13 @@ namespace Wanderling.Infrastructure.Mappers
             {
                 Id = model.Id,
                 UserId = model.UserId,
-                Name = model.Name,
-                Type = model.Type,
+                SpeciesName = model.SpeciesName,
+                DisplayedName = model.DisplayedName,
+                Type = model.TypeName,
                 Reproduction = model.Reproduction,
+                Description = model.Description,
+                Rarity = model.Rarity,
+                Effects = model.Effects,
                 CreatedAt = model.CreatedAt
             };
         }
@@ -27,9 +28,13 @@ namespace Wanderling.Infrastructure.Mappers
             {
                 Id = entity.Id,
                 UserId = entity.UserId,
-                Name = entity.Name,
-                Type = entity.Type,
+                SpeciesName = entity.SpeciesName,
+                DisplayedName = entity.DisplayedName,
+                TypeName = entity.Type,
                 Reproduction = entity.Reproduction,
+                Description = entity.Description,
+                Rarity = entity.Rarity,
+                Effects = entity.Effects,
                 CreatedAt = entity.CreatedAt
             };
         }

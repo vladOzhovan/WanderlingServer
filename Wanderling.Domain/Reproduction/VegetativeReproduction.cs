@@ -1,8 +1,8 @@
 ﻿using Wanderling.Domain.Interfaces;
 
-namespace Wanderling.Domain.Strategies
+namespace Wanderling.Domain.Reproduction
 {
-    public class SexualReproduction : IReproduction
+    public class VegetativeReproduction : IReproduction
     {
         public void Reproduce(IOrganism organism)
         {

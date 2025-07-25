@@ -1,0 +1,106 @@
+﻿[
+  {
+    "SpeciesKey": "Chamomile",
+    "DisplayedName": "Chamomile (Matricaria discoidea)",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "A medicinal plant with white petals and a yellow center. It’s often used in folk medicine.",
+    "Rarity": "Common",
+    "IconPath": "icons/chamomile.png",
+    "Effects": [
+      {
+        "Key": "Healing",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 30
+      },
+      {
+        "Key": "Calming",
+        "BaseMagnitude": 7.0,
+        "BaseDuration": 60
+      }
+    ],
+    "Tags": [ "herb", "medicinal", "wild" ]
+  },
+
+  {
+    "SpeciesKey": "Dandelion",
+    "DisplayedName": "Dandelion",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "A yellow flower that turns into a fluffy ball. Super common in spring and summer.",
+    "Rarity": "Common",
+    "IconPath": "icons/dandelion.png",
+    "Effects": [
+      {
+        "Key": "EnergyBoost",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 90
+      }
+    ],
+    "Tags": [ "common", "flower crown", "fluffy", "herb" ]
+  },
+
+  {
+    "SpeciesKey": "WhiteClover",
+    "DisplayedName": "White Clover (Trifolium repens)",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "A low-growing plant with three-part leaves. Might bring you luck if you find a four-leaf one.",
+    "Rarity": "Uncommon",
+    "IconPath": "icons/white_clover.png",
+    "Effects": [
+      {
+        "Key": "Luck",
+        "BaseMagnitude": 6.0,
+        "BaseDuration": 120
+      }
+    ],
+    "Tags": [ "luck", "magical", "meadow", "mysterious" ]
+  },
+
+  {
+    "SpeciesKey": "Rose",
+    "DisplayedName": "Rosa rugosa",
+    "TypeName": "Shrub",
+    "Reproduction": "Seed",
+    "Description": "A hardy wild rose species known for its wrinkled leaves, fragrant pink or white flowers, and bright red hips. Commonly found in coastal areas and used in landscaping.",
+    "Rarity": "Common",
+    "IconPath": "icons/rosa_rugosa.png",
+    "Effects": [
+      {
+        "Key": "Healing",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 20
+      },
+      {
+        "Key": "CharmBoost",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 90
+      }
+    ],
+    "Tags": [ "flowering", "medicinal", "shrub", "wild" ]
+  },
+
+  {
+    "SpeciesKey": "Eggplant",
+    "DisplayedName": "Eggplant",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "A purple, spongy fruit commonly used in cooking, but also for antioxidant compounds that support heart and liver health. Known for its high fiber and antioxidant content.",
+    "Rarity": "Common",
+    "IconPath": "icons/eggplant.png",
+    "Effects": [
+      {
+        "Key": "HealthBoost",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 30
+      },
+      {
+        "Key": "PoisonResistance",
+        "BaseMagnitude": 2.0,
+        "BaseDuration": 90
+      }
+    ],
+    "Tags": [ "edible", "medicinal", "purple", "vegetable", "house plant" ]
+  }
+]

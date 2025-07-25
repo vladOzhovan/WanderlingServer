@@ -1,25 +1,30 @@
 ﻿using System.Reflection;
-using Wanderling.Domain.Attributes;
-using Wanderling.Domain.Interfaces;
+using System.Text.Json;
 using Wanderling.Application.Interfaces;
+using Wanderling.Domain.Attributes;
 using Wanderling.Domain.Entities.Collections.Plants;
+using Wanderling.Domain.Interfaces;
 using Wanderling.Infrastructure.Resources;
 
 namespace Wanderling.Infrastructure.Factories
 {
     public class PlantFactory : IOrganismFactory
     {
-        private readonly IDictionary<string, Type> _plantRegistry;
+        private readonly IDictionary<string, Type> _plantTypesMap;
         private readonly IList<PlantDefinition> _definitions;
-        private readonly string _plantJsonPath;
 
-        public PlantFactory(string plantJsonPath)
+        public PlantFactory(string plantRegPath)
         {
-            _plantJsonPath = plantJsonPath;
+            var json = File.ReadAllText(plantRegPath);
 
-            _plantRegistry = Assembly.GetAssembly(typeof(Plant))!
+            _definitions = JsonSerializer.Deserialize<List<PlantDefinition>>(json)
+                           ?? new List<PlantDefinition>();
+
+            var baseType = typeof(Plant);
+
+            _plantTypesMap = Assembly.GetAssembly(typeof(Plant))!
                 .GetTypes()
-                .Where(t => t.IsSubclassOf(typeof(Type)) && !t.IsAbstract)
+                .Where(t => t.IsSubclassOf(typeof(Plant)) && !t.IsAbstract)
                 .Select(t => new
                 {
                     Type = t,
@@ -32,20 +37,45 @@ namespace Wanderling.Infrastructure.Factories
                 );
         }
 
-        public IOrganism Create(string name, string typeName, IReproduction reproduction)
+        public IOrganism Create(string speciesName, string typeName, IReproduction reproduction)
         {
-            if (!_plantRegistry.TryGetValue(typeName.ToLower(), out var type))
+            if (!_plantTypesMap.TryGetValue(typeName.ToLower(), out var plantType))
                 throw new ArgumentException($"Unknown plant type: {typeName}");
+
+            var plantDefinition = _definitions.FirstOrDefault(d =>
+                    string.Equals(d.SpeciesKey, speciesName, StringComparison.OrdinalIgnoreCase));
+
+            if (plantDefinition == null)
+                throw new InvalidOperationException($"Missing plant definition for {speciesName}");
 
             try
             {
-                var plant = (IOrganism)Activator.CreateInstance(type, name, reproduction);
+                var plant = (Plant)Activator.CreateInstance(plantType, speciesName, reproduction);
+
+                if (plant != null)
+                {
+                    plant.DisplayedName = plantDefinition.DisplayedName;
+                    plant.Description = plantDefinition.Description;
+                    plant.Rarity = plantDefinition.Rarity;
+                    plant.Effects = plantDefinition.Effects;
+                }
+
                 return plant;
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException($"Failed to create plant of type '{type.Name}'", ex);
+                throw new InvalidOperationException($"Failed to create plant of type '{plantType.Name}'", ex);
             }
+        }
+
+        public PlantDefinition? GetDefinition(string typeName)
+        {
+            return _definitions.FirstOrDefault(d => d.TypeName.Equals(typeName, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public IEnumerable<PlantDefinition> GetAvailableDefinitions()
+        {
+            return _definitions;
         }
     }
 }

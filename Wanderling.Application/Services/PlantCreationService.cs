@@ -1,18 +1,19 @@
 ﻿using Wanderling.Application.Interfaces;
 using Wanderling.Application.Mappers;
 using Wanderling.Application.Models;
+using Wanderling.Domain.Entities.Collections.Plants;
 using Wanderling.Domain.Interfaces;
-using Wanderling.Domain.Strategies;
+using Wanderling.Domain.Reproduction;
 
 namespace Wanderling.Application.Services
 {
     public class PlantCreationService : IPlantCreationService
     {
-        private readonly IOrganismFactory _factory;
+        private readonly IOrganismFactory _plantFactory;
         private readonly IPlantRepository _repository;
-        public PlantCreationService(IOrganismFactory factory, IPlantRepository repository)
+        public PlantCreationService(IOrganismFactory plantFactory, IPlantRepository repository)
         {
-            _factory = factory;
+            _plantFactory = plantFactory;
             _repository = repository;
         }
 
@@ -22,12 +23,13 @@ namespace Wanderling.Application.Services
             {
                 "seed" => new SeedReproduction(),
                 "spore" => new SporeReproduction(),
-                "sexual" => new SexualReproduction(),
+                "vegetative" or "veg" => new VegetativeReproduction(),
                 _ => throw new ArgumentException($"Unknown reproduction: {model.ReproductionKey}")
             };
 
-            var plant = _factory.Create(model.Name, model.TypeKey, reproduction);
-            await _repository.AddAsync(plant.ToModel());
+            var plant = _plantFactory.Create(model.SpeciesKey, model.TypeKey, reproduction) as Plant;
+            var plantModel = plant.ToPlantModel();
+            await _repository.AddAsync(plantModel);
             return await Task.FromResult(plant);
         }
     }

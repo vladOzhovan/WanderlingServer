@@ -5,7 +5,7 @@ using Wanderling.Application.Models;
 
 namespace Wanderling.Application.Mappers
 {
-    public static class PlantMapper
+    public static class IOrganismMapper
     {
         public static PlantModel ToModel(this IOrganism organism)
         {
@@ -15,10 +15,12 @@ namespace Wanderling.Application.Mappers
             return new PlantModel
             {
                 Id = organism.Id,
-                UserId = organism.UserId ?? null,
-                Name = organism.Name,
-                Type = metadata.TypeKey ?? type.Name,
-                Reproduction = organism.Reproduction,
+                UserId = organism.UserId ?? Guid.Empty,
+                SpeciesName = organism.SpeciesName ?? string.Empty,
+                DisplayedName = organism.DisplayedName ?? string.Empty,
+                TypeName = metadata.TypeKey ?? type.Name,
+                Reproduction = organism.Reproduction ?? string.Empty,
+                Description = organism.Description ?? string.Empty,
                 CreatedAt = organism.CreatedAt
             };
         }

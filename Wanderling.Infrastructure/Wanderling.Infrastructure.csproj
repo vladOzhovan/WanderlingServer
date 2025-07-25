@@ -25,11 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\plantsReg.json">
+    <None Update="Resources\plantsRegister.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Folder Include="Configuration\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

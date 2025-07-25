@@ -4,8 +4,9 @@
     {
         Guid Id { get; }
         Guid? UserId { get; }
-        string Name { get; }
-        string Description { get; }
+        string SpeciesName { get; }
+        string DisplayedName { get; set; }
+        string Description { get; set; }
         string Reproduction { get; }
         public bool IsDiscovered { get; }
         DateTime CreatedAt { get; }

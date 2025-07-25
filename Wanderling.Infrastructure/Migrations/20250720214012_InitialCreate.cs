@@ -30,6 +30,9 @@ namespace Wanderling.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
+                    SecondName = table.Column<string>(type: "TEXT", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
@@ -55,13 +58,14 @@ namespace Wanderling.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    UserId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    UserId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    SpeciesName = table.Column<string>(type: "TEXT", nullable: false),
+                    DisplayedName = table.Column<string>(type: "TEXT", nullable: false),
                     Type = table.Column<string>(type: "TEXT", nullable: false),
                     Reproduction = table.Column<string>(type: "TEXT", nullable: false),
-                    IsDiscovered = table.Column<bool>(type: "INTEGER", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DiscoveryDate = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    Rarity = table.Column<string>(type: "TEXT", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -174,6 +178,27 @@ namespace Wanderling.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "PlantEffect",
+                columns: table => new
+                {
+                    PlantEntityId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false),
+                    Key = table.Column<string>(type: "TEXT", nullable: false),
+                    BaseMagnitude = table.Column<double>(type: "REAL", nullable: false),
+                    BaseDuration = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlantEffect", x => new { x.PlantEntityId, x.Id });
+                    table.ForeignKey(
+                        name: "FK_PlantEffect_Plants_PlantEntityId",
+                        column: x => x.PlantEntityId,
+                        principalTable: "Plants",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -231,13 +256,16 @@ namespace Wanderling.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Plants");
+                name: "PlantEffect");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Plants");
         }
     }
 }

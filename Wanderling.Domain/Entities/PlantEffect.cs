@@ -2,8 +2,8 @@
 {
     public class PlantEffect
     {
-        public string Key { get; set; } = null;
+        public string Key { get; set; } = string.Empty;
         public double BaseMagnitude { get; set; }
-        public double BaseDuration { get; set; }
+        public int BaseDuration { get; set; }
     }
 }
