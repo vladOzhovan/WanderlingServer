@@ -53,14 +53,23 @@ namespace Wanderling.Api.Controllers
             return Ok(plant.ToPlantDto());
         }
 
-        [HttpPost]
-        public async Task<IActionResult> RecognizeFromPhoto()
+        [HttpPost("identify")]
+        public async Task<IActionResult> Identify([FromForm] IFormFile image, [FromServices] IPlantRecognitionService recognitionService)
         {
+            if (image == null || image.Length == 0)
+                return BadRequest("Upload a plant image.");
 
+            byte[] imageBytes;
 
+            using(var stream = new MemoryStream())
+            {
+                await image.CopyToAsync(stream);
+                imageBytes = stream.ToArray();
+            }
 
+            var recognitionresult = await recognitionService.IdentifyPlantAsync(imageBytes);
 
-            return Ok();
+            return Ok(recognitionresult);
         }
     }
 }

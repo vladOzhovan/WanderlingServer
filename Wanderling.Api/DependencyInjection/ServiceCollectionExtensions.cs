@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using Wanderling.Application.Interfaces;
@@ -11,6 +11,7 @@ using Wanderling.Infrastructure.Data;
 using Wanderling.Infrastructure.Entities;
 using Wanderling.Infrastructure.Factories;
 using Wanderling.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 
 namespace Wanderling.Api.DependencyInjection
@@ -63,6 +64,22 @@ namespace Wanderling.Api.DependencyInjection
             services.AddScoped<IReproduction, SporeReproduction>();
             services.AddScoped<IPlantCreationService, PlantCreationService>();
             services.AddScoped<IPlantRepository, PlantRepository>();
+
+            // bind configuration section to options
+            services.Configure<PlantRecognitionOptions>(configuration.GetSection("PlantRecognition"));
+
+            // register HttpClient factory
+            services.AddHttpClient();
+
+            // register IPlantRecognitionService using a factory
+            services.AddTransient<IPlantRecognitionService>(sp =>
+            {
+                var options = sp.GetRequiredService<IOptions<PlantRecognitionOptions>>().Value;
+                var httpClientFactory = sp.GetRequiredService<IHttpClientFactory>();
+                var httpClient = httpClientFactory.CreateClient();
+                return new PlantRecognitionService(httpClient, options.ApiKey, options.ApiUrl);
+
+            });
 
             var resourcePath = Path.Combine(env.ContentRootPath, "..", "Wanderling.Infrastructure", "Resources", "plantsRegister.json");
 
