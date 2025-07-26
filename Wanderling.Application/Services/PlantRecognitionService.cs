@@ -16,7 +16,7 @@ namespace Wanderling.Application.Services
             _apiUrl = apiUrl;
         }
 
-        public async Task<string> RecognizePlantAsync(byte[] plantImage)
+        public async Task<string> IdentifyPlantAsync(byte[] plantImage)
         {
             var requestContent = new MultipartFormDataContent();
             var imageContent = new ByteArrayContent(plantImage);

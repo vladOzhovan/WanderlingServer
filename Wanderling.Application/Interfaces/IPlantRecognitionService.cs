@@ -2,6 +2,6 @@
 {
     public interface IPlantRecognitionService
     {
-        Task<string> RecognizePlantAsync(byte[] plantImage);
+        Task<string> IdentifyPlantAsync(byte[] plantImage);
     }
 }
