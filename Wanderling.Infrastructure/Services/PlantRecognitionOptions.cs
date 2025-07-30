@@ -1,4 +1,4 @@
-﻿namespace Wanderling.Application.Services
+﻿namespace Wanderling.Infrastructure.Services
 {
     public class PlantRecognitionOptions
     {

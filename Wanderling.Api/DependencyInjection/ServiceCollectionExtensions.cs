@@ -12,6 +12,7 @@ using Wanderling.Infrastructure.Entities;
 using Wanderling.Infrastructure.Factories;
 using Wanderling.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Wanderling.Infrastructure.Services;
 
 
 namespace Wanderling.Api.DependencyInjection

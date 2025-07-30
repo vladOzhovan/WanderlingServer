@@ -12,14 +12,15 @@ namespace Wanderling.Infrastructure.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         
-        public DbSet<PlantEntity> Plants {  get; set; }
+        public DbSet<UserPlantEntity> UserPlants {  get; set; }
         public DbSet<UserEntity> Users {  get; set; }
+        public DbSet<PlantEntity> AllPlants {  get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<PlantEntity>().HasKey(p => p.Id);
+            modelBuilder.Entity<UserPlantEntity>().HasKey(p => p.Id);
 
             modelBuilder.Ignore<Plant>();
 
@@ -35,7 +36,7 @@ namespace Wanderling.Infrastructure.Data
             foreach (var type in fungusTypes)
                 modelBuilder.Ignore(type);
 
-            modelBuilder.Entity<PlantEntity>().OwnsMany(p => p.Effects, a =>
+            modelBuilder.Entity<UserPlantEntity>().OwnsMany(p => p.Effects, a =>
             {
                 a.WithOwner().HasForeignKey("PlantId");
                 a.Property<int>("Id");

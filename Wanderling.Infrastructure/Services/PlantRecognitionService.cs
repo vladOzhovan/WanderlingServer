@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using Wanderling.Application.Interfaces;
 
-namespace Wanderling.Application.Services
+namespace Wanderling.Infrastructure.Services
 {
     public class PlantRecognitionService : IPlantRecognitionService
     {
@@ -18,15 +18,15 @@ namespace Wanderling.Application.Services
 
         public async Task<string> IdentifyPlantAsync(byte[] plantImage)
         {
-            var requestContent = new MultipartFormDataContent();
+            using var content = new MultipartFormDataContent();
             var imageContent = new ByteArrayContent(plantImage);
 
             imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
-            requestContent.Add(imageContent, "images", "plant.jpg");
+            content.Add(imageContent, "images", "plant.jpg");
 
             _httpClient.DefaultRequestHeaders.Add("Api-Key", _apiKey);
 
-            var response = await _httpClient.PostAsync(_apiUrl, requestContent);
+            var response = await _httpClient.PostAsync(_apiUrl, content);
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
 
