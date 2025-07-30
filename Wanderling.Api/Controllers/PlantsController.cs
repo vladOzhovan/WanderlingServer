@@ -54,7 +54,8 @@ namespace Wanderling.Api.Controllers
         }
 
         [HttpPost("identify")]
-        public async Task<IActionResult> Identify([FromForm] IFormFile image, [FromServices] IPlantRecognitionService recognitionService)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> Identify(IFormFile image, [FromServices] IPlantRecognitionService recognitionService)
         {
             if (image == null || image.Length == 0)
                 return BadRequest("Upload a plant image.");
