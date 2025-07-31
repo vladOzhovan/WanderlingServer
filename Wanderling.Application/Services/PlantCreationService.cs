@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.Text.Json;
-using Wanderling.Application.Interfaces;
+﻿using Wanderling.Application.Interfaces;
 using Wanderling.Application.Mappers;
 using Wanderling.Application.Models;
 using Wanderling.Domain.Entities.Collections.Plants;
@@ -31,7 +29,7 @@ namespace Wanderling.Application.Services
 
             var plant = _plantFactory.Create(model.SpeciesKey, model.TypeKey, reproduction) as Plant;
             var plantModel = plant.ToPlantModel();
-            await _repository.AddAsync(plantModel);
+            await _repository.AddToUserAsync(plantModel);
             return await Task.FromResult(plant);
         }
     }

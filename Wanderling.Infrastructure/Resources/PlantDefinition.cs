@@ -10,7 +10,7 @@ namespace Wanderling.Infrastructure.Resources
         public string Reproduction { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Rarity { get; set; } = string.Empty;
-        public string IconPath { get; set; } = string.Empty;
+        public string ImageUrl { get; set; } = string.Empty;
         public List<PlantEffect> Effects { get; set; } = new();
         public List<string> Tags { get; set; } = new();
     }

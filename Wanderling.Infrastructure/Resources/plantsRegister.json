@@ -6,7 +6,7 @@
     "Reproduction": "Seed",
     "Description": "A medicinal plant with white petals and a yellow center. It’s often used in folk medicine.",
     "Rarity": "Common",
-    "IconPath": "icons/chamomile.png",
+    "ImageUrl": "icons/chamomile.png",
     "Effects": [
       {
         "Key": "Healing",
@@ -29,7 +29,7 @@
     "Reproduction": "Seed",
     "Description": "A yellow flower that turns into a fluffy ball. Super common in spring and summer.",
     "Rarity": "Common",
-    "IconPath": "icons/dandelion.png",
+    "ImageUrl": "icons/dandelion.png",
     "Effects": [
       {
         "Key": "EnergyBoost",
@@ -47,7 +47,7 @@
     "Reproduction": "Seed",
     "Description": "A low-growing plant with three-part leaves. Might bring you luck if you find a four-leaf one.",
     "Rarity": "Uncommon",
-    "IconPath": "icons/white_clover.png",
+    "ImageUrl": "icons/white_clover.png",
     "Effects": [
       {
         "Key": "Luck",
@@ -65,7 +65,7 @@
     "Reproduction": "Seed",
     "Description": "A hardy wild rose species known for its wrinkled leaves, fragrant pink or white flowers, and bright red hips. Commonly found in coastal areas and used in landscaping.",
     "Rarity": "Common",
-    "IconPath": "icons/rosa_rugosa.png",
+    "ImageUrl": "icons/rosa_rugosa.png",
     "Effects": [
       {
         "Key": "Healing",
@@ -88,7 +88,7 @@
     "Reproduction": "Seed",
     "Description": "A purple, spongy fruit commonly used in cooking, but also for antioxidant compounds that support heart and liver health. Known for its high fiber and antioxidant content.",
     "Rarity": "Common",
-    "IconPath": "icons/eggplant.png",
+    "ImageUrl": "icons/eggplant.png",
     "Effects": [
       {
         "Key": "HealthBoost",

@@ -7,12 +7,12 @@ namespace Wanderling.Application.Mappers
 {
     public static class IOrganismMapper
     {
-        public static PlantModel ToModel(this IOrganism organism)
+        public static UserPlantModel ToModel(this IOrganism organism)
         {
             var type = organism.GetType();
             var metadata = type.GetCustomAttribute<PlantMetadataAttribute>();
 
-            return new PlantModel
+            return new UserPlantModel
             {
                 Id = organism.Id,
                 UserId = organism.UserId ?? Guid.Empty,
@@ -21,7 +21,8 @@ namespace Wanderling.Application.Mappers
                 TypeName = metadata.TypeKey ?? type.Name,
                 Reproduction = organism.Reproduction ?? string.Empty,
                 Description = organism.Description ?? string.Empty,
-                CreatedAt = organism.CreatedAt
+                CreatedAt = organism.CreatedAt,
+                DiscoveredAt = organism.DiscoverededAt ?? DateTime.UtcNow
             };
         }
     }

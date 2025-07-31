@@ -4,7 +4,7 @@ namespace Wanderling.Application.Interfaces
 {
     public interface IPlantRepository
     {
-        Task AddAsync(PlantModel model);
-        Task<List<PlantModel>> GetByUserIdAsync(Guid userId);
+        Task AddToUserAsync(UserPlantModel model);
+        Task<List<UserPlantModel>> GetByUserIdAsync(Guid userId);
     }
 }

@@ -61,10 +61,11 @@ namespace Wanderling.Api.DependencyInjection
             });
 
             services.AddScoped<IReproduction, SeedReproduction>();
-            services.AddScoped<IReproduction, VegetativeReproduction>();
             services.AddScoped<IReproduction, SporeReproduction>();
-            services.AddScoped<IPlantCreationService, PlantCreationService>();
             services.AddScoped<IPlantRepository, PlantRepository>();
+            services.AddScoped<IReproduction, VegetativeReproduction>();
+            services.AddScoped<IPlantCreationService, PlantCreationService>();
+            //services.AddScoped<IDiscoveredPlantCreationService, DiscoveredPlantCreationService>();
 
             // bind configuration section to options
             services.Configure<PlantRecognitionOptions>(configuration.GetSection("PlantRecognition"));

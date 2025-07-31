@@ -2,10 +2,10 @@
 
 namespace Wanderling.Application.Models
 {
-    public class PlantModel
+    public class UserPlantModel
     {
         public Guid Id { get; set; }
-        public Guid? UserId { get; set; } = Guid.Empty;
+        public Guid UserId { get; set; } = Guid.Empty;
         public string SpeciesName { get; set; } = string.Empty;
         public string DisplayedName { get; set; } = string.Empty;
         public string TypeName { get; set; } = string.Empty;
@@ -14,5 +14,6 @@ namespace Wanderling.Application.Models
         public string Rarity { get; set; } = string.Empty;
         public List<PlantEffect> Effects { get; set; } = new();
         public DateTime CreatedAt { get; set; }
+        public DateTime DiscoveredAt { get; set; }
     }
 }

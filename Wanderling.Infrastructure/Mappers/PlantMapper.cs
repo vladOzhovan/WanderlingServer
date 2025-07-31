@@ -5,7 +5,7 @@ namespace Wanderling.Infrastructure.Mappers
 {
     public static class PlantMapper
     {
-        public static UserPlantEntity ToEntity(this PlantModel model)
+        public static UserPlantEntity ToEntity(this UserPlantModel model)
         {
             return new UserPlantEntity
             {
@@ -22,9 +22,9 @@ namespace Wanderling.Infrastructure.Mappers
             };
         }
 
-        public static PlantModel ToModel(this UserPlantEntity entity)
+        public static UserPlantModel ToModel(this UserPlantEntity entity)
         {
-            return new PlantModel
+            return new UserPlantModel
             {
                 Id = entity.Id,
                 UserId = entity.UserId,

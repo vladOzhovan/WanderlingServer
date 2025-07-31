@@ -15,14 +15,14 @@ namespace Wanderling.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<List<PlantModel>> GetByUserIdAsync(Guid userId)
+        public async Task<List<UserPlantModel>> GetByUserIdAsync(Guid userId)
         {
             var plantEntities = await _context.UserPlants.Where(p =>  p.UserId == userId).ToListAsync();
             var plantModels = plantEntities.Select(p => p.ToModel()).ToList();
             return plantModels;
         }
 
-        public async Task AddAsync(PlantModel model)
+        public async Task AddToUserAsync(UserPlantModel model)
         {
             await _context.UserPlants.AddAsync(model.ToEntity());
             await _context.SaveChangesAsync();

@@ -12,6 +12,25 @@ namespace Wanderling.Api.Controllers
     [Route("[controller]")]
     public class PlantsController : ControllerBase
     {
+        private readonly IDiscoveredPlantCreationService _discoveredPlantCreationService;
+
+        public PlantsController(IDiscoveredPlantCreationService discoveredPlantCreationService)
+        {
+            _discoveredPlantCreationService = discoveredPlantCreationService;
+        }
+
+        [HttpPost("create-discovered/{userId:Guid}")]
+        public async Task<IActionResult> CreateDiscovered([FromForm] IFormFile image)
+        {
+            var userId = User.GetUserId();
+            var result = await _discoveredPlantCreationService.CreateDiscoveredAsync(image, userId);
+
+            if (result == null)
+                return BadRequest("Plant not recognized");
+
+            return Ok(result);
+        }
+
         [HttpPost("create-virtual")]
         public async Task<IActionResult> CreateVirtual([FromServices] IPlantCreationService service, [FromBody] PlantCreateDto dto)
         {
@@ -28,16 +47,6 @@ namespace Wanderling.Api.Controllers
                 return BadRequest("Failed to create plant");
 
             return Ok(plant.ToPlantDto());
-        }
-
-        [HttpPost("create-discovered/{userId:Guid}")]
-        public async Task<IActionResult> CreateDiscovered([FromServices] IPlantCreationService service, [FromBody] PlantCreateDto dto)
-        {
-            var userId = User.GetUserId();
-
-
-
-            return Ok();
         }
 
         //[HttpPost("create-discovered/{userId:Guid}")]

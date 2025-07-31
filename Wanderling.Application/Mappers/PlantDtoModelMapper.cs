@@ -26,12 +26,12 @@ namespace Wanderling.Application.Mappers
             };
         }
 
-        public static PlantModel ToPlantModel(this Plant plant)
+        public static UserPlantModel ToPlantModel(this Plant plant)
         {
             var type = plant.GetType();
             var metadata = type.GetCustomAttribute<PlantMetadataAttribute>();
 
-            return new PlantModel
+            return new UserPlantModel
             {
                 Id = plant.Id,
                 UserId = plant.UserId ?? Guid.Empty,
