@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using Wanderling.Application.Interfaces;
 using Wanderling.Application.Mappers;
@@ -13,14 +14,20 @@ namespace Wanderling.Application.Services
         private readonly IPlantRepository _repository;
         private readonly IPlantCreationService _creationService;
         private readonly IPlantRecognitionService _recognitionService;
+        private readonly ILogger<DiscoveredPlantCreationService> _logger;
 
         public DiscoveredPlantCreationService(
-            IPlantRepository repository, IPlantCreationService creationService, IPlantRecognitionService recognitionService)
+            ILogger<DiscoveredPlantCreationService> logger,
+            IPlantRepository repository,
+            IPlantCreationService creationService,
+            IPlantRecognitionService recognitionService)
         {
+            _logger = logger;
             _repository = repository;
             _creationService = creationService;
             _recognitionService = recognitionService;
         }
+
         public async Task<PlantIdentifiedModel> CreateDiscoveredAsync(IFormFile image, Guid userId)
         {
             using var ms = new MemoryStream();
@@ -29,10 +36,20 @@ namespace Wanderling.Application.Services
 
             var apiResponseJson = await _recognitionService.IdentifyPlantAsync(imageBytes);
 
-            var responseResult = JsonSerializer.Deserialize<PlantApiResponse>(apiResponseJson, new JsonSerializerOptions
+            PlantApiResponse? responseResult;
+
+            try
             {
-                PropertyNameCaseInsensitive = true
-            });
+                responseResult = JsonSerializer.Deserialize<PlantApiResponse>(apiResponseJson, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            }
+            catch (JsonException ex)
+            {
+                _logger.LogError($"Failed to deserialize {typeof(PlantApiResponse)}");
+                throw new InvalidOperationException("Plant recognition error", ex);
+            }
 
             var plantScientificName = responseResult?.Suggestions?.FirstOrDefault()?.ScientificName;
 
@@ -44,12 +61,28 @@ namespace Wanderling.Application.Services
             if (!File.Exists(plantsRegisterPath))
                 throw new Exception("plantsRegister.json not found");
 
-            var jsonReg = File.ReadAllText(plantsRegisterPath);
             
-            var register = JsonSerializer.Deserialize<List<PlantDefinition>>(jsonReg, new JsonSerializerOptions
+            List<PlantDefinition>? register;
+
+            try
             {
-                PropertyNameCaseInsensitive = true
-            });
+                var jsonReg = File.ReadAllText(plantsRegisterPath);
+
+                register = JsonSerializer.Deserialize<List<PlantDefinition>>(jsonReg, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            }
+            catch (IOException ex)
+            {
+                _logger.LogError(ex, "Failed to read plantsRegister.json");
+                throw new FileNotFoundException("Error while reading plantsRegister.json", ex);
+            }
+            catch (JsonException ex)
+            {
+                _logger.LogError(ex, "plantsRegister.json has invalid format");
+                throw new JsonException("Invalid plantsRegister.json format", ex);
+            }
 
             var definition = register?.FirstOrDefault(p => 
                 string.Equals(p.ScientificName, plantScientificName, StringComparison.OrdinalIgnoreCase));
