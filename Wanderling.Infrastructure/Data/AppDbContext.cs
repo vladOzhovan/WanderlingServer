@@ -43,11 +43,12 @@ namespace Wanderling.Infrastructure.Data
                 a.HasKey("Id");
             });
 
-            //modelBuilder.Entity<PlantEntity>().OwnsMany(p => p.Effects, a =>
-            //{
-            //    a.WithOwner().HasForeignKey("PlantId");
-            //    a.HasKey("PlantId", "Key");
-            //});
+            modelBuilder.Entity<PlantEntity>().OwnsMany(p => p.Effects, a =>
+            {
+                a.WithOwner().HasForeignKey("PlantId");
+                a.Property<int>("Id");
+                a.HasKey("PlantId", "Key");
+            });
         }
     }
 }
