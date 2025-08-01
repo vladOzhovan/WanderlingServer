@@ -5,6 +5,6 @@ namespace Wanderling.Application.Models
     public class PlantSuggestion
     {
         [JsonPropertyName("plant_name")]
-        public string PlantName { get; set; } = string.Empty;
+        public string ScientificName { get; set; } = string.Empty;
     }
 }

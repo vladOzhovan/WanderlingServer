@@ -9,14 +9,14 @@ namespace Wanderling.Domain.Entities
         protected Organism(string speciesName, IReproduction reproduction)
         {
             Id = Guid.NewGuid();
-            SpeciesName = speciesName;
+            ScientificName = speciesName;
             _reproduction = reproduction;
             CreatedAt = DateTime.UtcNow;
         }
 
         public Guid Id { get; }
         public Guid? UserId {  get; private set; }
-        public string SpeciesName { get; set; } = string.Empty;
+        public string ScientificName { get; set; } = string.Empty;
         public string DisplayedName { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Reproduction => _reproduction.GetType().Name;

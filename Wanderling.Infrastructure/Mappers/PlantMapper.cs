@@ -11,7 +11,7 @@ namespace Wanderling.Infrastructure.Mappers
             {
                 Id = model.Id,
                 UserId = model.UserId,
-                SpeciesName = model.SpeciesName,
+                ScientificName = model.ScientificName,
                 DisplayedName = model.DisplayedName,
                 Type = model.TypeName,
                 Reproduction = model.Reproduction,
@@ -28,7 +28,7 @@ namespace Wanderling.Infrastructure.Mappers
             {
                 Id = entity.Id,
                 UserId = entity.UserId,
-                SpeciesName = entity.SpeciesName,
+                ScientificName = entity.ScientificName,
                 DisplayedName = entity.DisplayedName,
                 TypeName = entity.Type,
                 Reproduction = entity.Reproduction,

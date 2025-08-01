@@ -6,7 +6,7 @@ namespace Wanderling.Application.Models
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; } = Guid.Empty;
-        public string SpeciesName { get; set; } = string.Empty;
+        public string ScientificName { get; set; } = string.Empty;
         public string DisplayedName { get; set; } = string.Empty;
         public string TypeName { get; set; } = string.Empty;
         public string Reproduction { get; set; } = string.Empty;

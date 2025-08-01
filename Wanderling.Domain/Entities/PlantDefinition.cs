@@ -1,10 +1,8 @@
-﻿using Wanderling.Domain.Entities;
-
-namespace Wanderling.Infrastructure.Resources
+﻿namespace Wanderling.Domain.Entities
 {
     public class PlantDefinition
     {
-        public string SpeciesKey { get; set; } = string.Empty;
+        public string ScientificName { get; set; } = string.Empty;
         public string DisplayedName { get; set; } = string.Empty;
         public string TypeName { get; set; } = string.Empty;
         public string Reproduction { get; set; } = string.Empty;

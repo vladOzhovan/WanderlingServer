@@ -4,7 +4,7 @@
     {
         Guid Id { get; }
         Guid? UserId { get; }
-        string SpeciesName { get; }
+        string ScientificName { get; }
         string DisplayedName { get; set; }
         string Description { get; set; }
         string Reproduction { get; }

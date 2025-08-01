@@ -16,7 +16,7 @@ namespace Wanderling.Application.Mappers
             {
                 Id = organism.Id,
                 UserId = organism.UserId ?? Guid.Empty,
-                SpeciesName = organism.SpeciesName ?? string.Empty,
+                ScientificName = organism.ScientificName ?? string.Empty,
                 DisplayedName = organism.DisplayedName ?? string.Empty,
                 TypeName = metadata.TypeKey ?? type.Name,
                 Reproduction = organism.Reproduction ?? string.Empty,

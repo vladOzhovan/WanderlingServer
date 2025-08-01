@@ -1,7 +1,7 @@
 ﻿[
   {
-    "SpeciesKey": "Chamomile",
-    "DisplayedName": "Chamomile (Matricaria discoidea)",
+    "ScientificName": "Matricaria chamomilla",
+    "DisplayedName": "Chamomile",
     "TypeName": "Flower",
     "Reproduction": "Seed",
     "Description": "A medicinal plant with white petals and a yellow center. It’s often used in folk medicine.",
@@ -21,10 +21,9 @@
     ],
     "Tags": [ "herb", "medicinal", "wild" ]
   },
-
   {
-    "SpeciesKey": "Dandelion",
-    "DisplayedName": "Dandelion",
+    "ScientificName": "Taraxacum ceratophorum",
+    "DisplayedName": "Horned Dandelion",
     "TypeName": "Flower",
     "Reproduction": "Seed",
     "Description": "A yellow flower that turns into a fluffy ball. Super common in spring and summer.",
@@ -39,10 +38,9 @@
     ],
     "Tags": [ "common", "flower crown", "fluffy", "herb" ]
   },
-
   {
-    "SpeciesKey": "WhiteClover",
-    "DisplayedName": "White Clover (Trifolium repens)",
+    "ScientificName": "Trifolium repens",
+    "DisplayedName": "White Clover",
     "TypeName": "Herb",
     "Reproduction": "Seed",
     "Description": "A low-growing plant with three-part leaves. Might bring you luck if you find a four-leaf one.",
@@ -57,10 +55,9 @@
     ],
     "Tags": [ "luck", "magical", "meadow", "mysterious" ]
   },
-
   {
-    "SpeciesKey": "Rose",
-    "DisplayedName": "Rosa rugosa",
+    "ScientificName": "Rosa rugosa",
+    "DisplayedName": "Rose",
     "TypeName": "Shrub",
     "Reproduction": "Seed",
     "Description": "A hardy wild rose species known for its wrinkled leaves, fragrant pink or white flowers, and bright red hips. Commonly found in coastal areas and used in landscaping.",
@@ -80,9 +77,8 @@
     ],
     "Tags": [ "flowering", "medicinal", "shrub", "wild" ]
   },
-
   {
-    "SpeciesKey": "Eggplant",
+    "ScientificName": "Solanum melongena",
     "DisplayedName": "Eggplant",
     "TypeName": "Herb",
     "Reproduction": "Seed",
@@ -102,5 +98,798 @@
       }
     ],
     "Tags": [ "edible", "medicinal", "purple", "vegetable", "house plant" ]
+  },
+  {
+    "ScientificName": "Achillea millefolium",
+    "DisplayedName": "Common Yarrow",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Herbaceous perennial with flat clusters of white flowers and feathery leaves.",
+    "Rarity": "Common",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Healing",
+        "BaseMagnitude": 6.0,
+        "BaseDuration": 40
+      },
+      {
+        "Key": "StaminaBoost",
+        "BaseMagnitude": 2.0,
+        "BaseDuration": 90
+      }
+    ],
+    "Tags": [ "medicinal", "wildflower", "pollinator", "herb" ]
+  },
+  {
+    "ScientificName": "Urtica dioica",
+    "DisplayedName": "Stinging Nettle",
+    "TypeName": "Herb",
+    "Reproduction": "Vegetative",
+    "Description": "Tall perennial herb with jagged leaves and stinging hairs.",
+    "Rarity": "Common",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "DefenseBoost",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "PainResistance",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 120
+      }
+    ],
+    "Tags": [ "wild", "edible", "stinging", "nutritious" ]
+  },
+  {
+    "ScientificName": "Bellis perennis",
+    "DisplayedName": "Common Daisy",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "Low perennial with white petals and yellow center, common in lawns.",
+    "Rarity": "Common",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "CharmBoost",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 50
+      },
+      {
+        "Key": "Happiness",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 60
+      }
+    ],
+    "Tags": [ "lawn", "flower", "edible", "cheerful" ]
+  },
+  {
+    "ScientificName": "Quercus robur",
+    "DisplayedName": "English Oak",
+    "TypeName": "DeciduousTree",
+    "Reproduction": "Seed",
+    "Description": "Large DeciduousTree with lobed leaves and acorns.",
+    "Rarity": "Common",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "StaminaBoost",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 120
+      },
+      {
+        "Key": "Protection",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 150
+      }
+    ],
+    "Tags": [ "tree", "acorn", "strong", "forest" ]
+  },
+  {
+    "ScientificName": "Fagus sylvatica",
+    "DisplayedName": "European Beech",
+    "TypeName": "DeciduousTree",
+    "Reproduction": "Seed",
+    "Description": "A tall DeciduousTree with smooth grey bark and shiny leaves, common in European forests.",
+    "Rarity": "Common",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "DefenseBoost",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 90
+      },
+      {
+        "Key": "Camouflage",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 60
+      }
+    ],
+    "Tags": [ "tree", "shade", "forest", "hardwood" ]
+  },
+  {
+    "ScientificName": "Cirsium vulgare",
+    "DisplayedName": "Spear Thistle",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Spiny plant with purple flowers, often found in pastures and fields.",
+    "Rarity": "Common",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "ThornShield",
+        "BaseMagnitude": 6.0,
+        "BaseDuration": 40
+      },
+      {
+        "Key": "PoisonResistance",
+        "BaseMagnitude": 2.0,
+        "BaseDuration": 60
+      }
+    ],
+    "Tags": [ "thistle", "spiny", "wild", "purple" ]
+  },
+  {
+    "ScientificName": "Ulex europaeus",
+    "DisplayedName": "Common Gorse",
+    "TypeName": "Shrub",
+    "Reproduction": "Seed",
+    "Description": "Evergreen shrub with yellow flowers, found in open habitats and heathlands.",
+    "Rarity": "Common",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "FireResistance",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 50
+      },
+      {
+        "Key": "EnergyBoost",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 60
+      }
+    ],
+    "Tags": [ "evergreen", "yellow", "wild", "shrub" ]
+  },
+  {
+    "ScientificName": "Juniperus communis",
+    "DisplayedName": "Common Juniper",
+    "TypeName": "Shrub",
+    "Reproduction": "Seed",
+    "Description": "Coniferous shrub with blue berries, used for flavoring and traditional medicine.",
+    "Rarity": "Common",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "VisionBoost",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 45
+      },
+      {
+        "Key": "Antitoxin",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 90
+      }
+    ],
+    "Tags": [ "conifer", "berries", "medicinal", "spice" ]
+  },
+  {
+    "ScientificName": "Alnus glutinosa",
+    "DisplayedName": "Common Alder",
+    "TypeName": "DeciduousTree",
+    "Reproduction": "Seed",
+    "Description": "Medium-sized tree thriving in wet soils near rivers and wetlands.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "WaterPurification",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 80
+      },
+      {
+        "Key": "NitrogenFixing",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 60
+      }
+    ],
+    "Tags": [ "pioneer", "wetland", "nitrogen\u2011fixer", "wildlife" ]
+  },
+  {
+    "ScientificName": "Smyrnium olusatrum",
+    "DisplayedName": "Alexanders",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Edible umbellifer found on hedgerows and waste ground near coasts.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "StaminaBoost",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "CharmBoost",
+        "BaseMagnitude": 2.0,
+        "BaseDuration": 50
+      }
+    ],
+    "Tags": [ "edible", "hedge", "medicinal", "historical" ]
+  },
+  {
+    "ScientificName": "Digitalis purpurea",
+    "DisplayedName": "Foxglove",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "Tall plant with tubular purple flowers; toxic but used in heart medicine.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "MagicBoost",
+        "BaseMagnitude": 6.0,
+        "BaseDuration": 70
+      },
+      {
+        "Key": "ToxicTouch",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 50
+      }
+    ],
+    "Tags": [ "toxic", "flower", "forest", "purple" ]
+  },
+  {
+    "ScientificName": "Convallaria majalis",
+    "DisplayedName": "Lily of the Valley",
+    "TypeName": "Flower",
+    "Reproduction": "Vegetative",
+    "Description": "Fragrant white bell-shaped flowers; grows in shady woodlands.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "CharmBoost",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 80
+      },
+      {
+        "Key": "SleepResistance",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 60
+      }
+    ],
+    "Tags": [ "shade", "forest", "flower", "poisonous" ]
+  },
+  {
+    "ScientificName": "Primula vulgaris",
+    "DisplayedName": "Primrose",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "Early-blooming flower with pale yellow petals; often seen in meadows and woodlands.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Healing",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 50
+      },
+      {
+        "Key": "MoodLift",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 60
+      }
+    ],
+    "Tags": [ "early", "meadow", "woodland", "flower" ]
+  },
+  {
+    "ScientificName": "Anemone nemorosa",
+    "DisplayedName": "Wood Anemone",
+    "TypeName": "Flower",
+    "Reproduction": "Vegetative",
+    "Description": "White woodland flower spreading via rhizomes; blooms in early spring.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Calming",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 45
+      },
+      {
+        "Key": "FocusBoost",
+        "BaseMagnitude": 2.0,
+        "BaseDuration": 70
+      }
+    ],
+    "Tags": [ "woodland", "white", "spring", "flower" ]
+  },
+  {
+    "ScientificName": "Lonicera periclymenum",
+    "DisplayedName": "Honeysuckle",
+    "TypeName": "Shrub",
+    "Reproduction": "Seed",
+    "Description": "Climbing shrub with sweetly scented tubular flowers; attracts pollinators.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Attract",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 100
+      },
+      {
+        "Key": "Camouflage",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 60
+      }
+    ],
+    "Tags": [ "climber", "fragrant", "pollinator", "shrub" ]
+  },
+  {
+    "ScientificName": "Echium vulgare",
+    "DisplayedName": "Viper's Bugloss",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "Striking blue flowered plant covered in bristles; thrives in dry grasslands.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "EnergyBoost",
+        "BaseMagnitude": 4.5,
+        "BaseDuration": 80
+      },
+      {
+        "Key": "FireResistance",
+        "BaseMagnitude": 2.0,
+        "BaseDuration": 40
+      }
+    ],
+    "Tags": [ "blue", "dry", "grassland", "bristly" ]
+  },
+  {
+    "ScientificName": "Pulmonaria officinalis",
+    "DisplayedName": "Lungwort",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Spotted leaves and pink-blue flowers; associated with respiratory health.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Healing",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "Antitoxin",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 70
+      }
+    ],
+    "Tags": [ "herb", "spotted", "woodland", "flower" ]
+  },
+  {
+    "ScientificName": "Heracleum sphondylium",
+    "DisplayedName": "Common Hogweed",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Tall umbellifer with large leaves; widespread in meadows and roadsides.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "GrowthBoost",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "GiantForm",
+        "BaseMagnitude": 6.0,
+        "BaseDuration": 50
+      }
+    ],
+    "Tags": [ "tall", "meadow", "umbellifer", "wild" ]
+  },
+  {
+    "ScientificName": "Hyacinthoides non-scripta",
+    "DisplayedName": "Bluebell",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "Fragrant blue flower carpeting spring woodlands in Western Europe.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "CharmBoost",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 90
+      },
+      {
+        "Key": "SpeedBoost",
+        "BaseMagnitude": 2.0,
+        "BaseDuration": 40
+      }
+    ],
+    "Tags": [ "spring", "blue", "forest", "fragrant" ]
+  },
+  {
+    "ScientificName": "Papaver rhoeas",
+    "DisplayedName": "Common Poppy",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "Iconic red flower growing in disturbed soils and fields.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Sleep",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "Healing",
+        "BaseMagnitude": 2.0,
+        "BaseDuration": 50
+      }
+    ],
+    "Tags": [ "red", "field", "remembrance", "flower" ]
+  },
+  {
+    "ScientificName": "Lotus corniculatus",
+    "DisplayedName": "Bird's-foot Trefoil",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Low-growing yellow-flowered herb often found in grasslands and meadows.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "JumpBoost",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 50
+      },
+      {
+        "Key": "Luck",
+        "BaseMagnitude": 2.0,
+        "BaseDuration": 60
+      }
+    ],
+    "Tags": [ "yellow", "meadow", "pollinator", "groundcover" ]
+  },
+  {
+    "ScientificName": "Anthriscus sylvestris",
+    "DisplayedName": "Cow Parsley",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Tall white-flowered umbellifer that grows along roadsides and woodland edges.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "GrowthBoost",
+        "BaseMagnitude": 4.5,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "SpeedBoost",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 40
+      }
+    ],
+    "Tags": [ "tall", "white", "early", "wild" ]
+  },
+  {
+    "ScientificName": "Alliaria petiolata",
+    "DisplayedName": "Garlic Mustard",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Edible biennial herb with garlic-scented leaves; common in woodlands.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Antitoxin",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "PoisonResistance",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 80
+      }
+    ],
+    "Tags": [ "edible", "garlic", "woodland", "medicinal" ]
+  },
+  {
+    "ScientificName": "Leucanthemum vulgare",
+    "DisplayedName": "Oxeye Daisy",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "Large daisy-like flower seen in meadows and grassy roadsides.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Happiness",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 50
+      },
+      {
+        "Key": "Luck",
+        "BaseMagnitude": 2.5,
+        "BaseDuration": 60
+      }
+    ],
+    "Tags": [ "daisy", "meadow", "flower", "white" ]
+  },
+  {
+    "ScientificName": "Ranunculus acris",
+    "DisplayedName": "Meadow Buttercup",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "Glossy yellow flower found abundantly in fields and damp meadows.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "EnergyBoost",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "SunlightAffinity",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 40
+      }
+    ],
+    "Tags": [ "yellow", "meadow", "glossy", "common" ]
+  },
+  {
+    "ScientificName": "Taraxacum officinale",
+    "DisplayedName": "Common Dandelion",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "Bright yellow flower that turns into white puffball; thrives in lawns and roadsides.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "EnergyBoost",
+        "BaseMagnitude": 4.5,
+        "BaseDuration": 90
+      },
+      {
+        "Key": "DigestionAid",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 70
+      }
+    ],
+    "Tags": [
+      "common",
+      "edible",
+      "yellow",
+      "puff"
+    ]
+  },
+  {
+    "ScientificName": "Mentha aquatica",
+    "DisplayedName": "Water Mint",
+    "TypeName": "Herb",
+    "Reproduction": "Vegetative",
+    "Description": "Aromatic herb growing in wet soils near streams and ponds.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Cooling",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "Healing",
+        "BaseMagnitude": 3.5,
+        "BaseDuration": 50
+      }
+    ],
+    "Tags": [
+      "mint",
+      "aromatic",
+      "wetland",
+      "edible"
+    ]
+  },
+  {
+    "ScientificName": "Plantago lanceolata",
+    "DisplayedName": "Ribwort Plantain",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Rosette-forming herb with narrow leaves and flower spikes; often in grasslands.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Healing",
+        "BaseMagnitude": 4.5,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "DefenseBoost",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 70
+      }
+    ],
+    "Tags": [
+      "herb",
+      "grass",
+      "healing",
+      "wild"
+    ]
+  },
+  {
+    "ScientificName": "Stellaria media",
+    "DisplayedName": "Chickweed",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Tiny-leaved edible plant common in gardens and cultivated ground.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Antitoxin",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "Regeneration",
+        "BaseMagnitude": 2.5,
+        "BaseDuration": 80
+      }
+    ],
+    "Tags": [
+      "edible",
+      "garden",
+      "medicinal",
+      "weed"
+    ]
+  },
+  {
+    "ScientificName": "Ajuga reptans",
+    "DisplayedName": "Bugle",
+    "TypeName": "Herb",
+    "Reproduction": "Vegetative",
+    "Description": "Low-growing groundcover with spikes of blue flowers; common in shady habitats.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Camouflage",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 50
+      },
+      {
+        "Key": "Healing",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 40
+      }
+    ],
+    "Tags": [
+      "groundcover",
+      "blue",
+      "shade",
+      "forest"
+    ]
+  },
+  {
+    "ScientificName": "Hypericum perforatum",
+    "DisplayedName": "St John's Wort",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Yellow-flowered herb known for medicinal and mood-lifting properties.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Healing",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 80
+      },
+      {
+        "Key": "MoodLift",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 60
+      }
+    ],
+    "Tags": [
+      "yellow",
+      "medicinal",
+      "sun",
+      "wild"
+    ]
+  },
+  {
+    "ScientificName": "Calluna vulgaris",
+    "DisplayedName": "Heather",
+    "TypeName": "Shrub",
+    "Reproduction": "Seed",
+    "Description": "Small evergreen shrub with pink-purple flowers, common in heathlands.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "CharmBoost",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 70
+      },
+      {
+        "Key": "Calming",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 50
+      }
+    ],
+    "Tags": [
+      "heath",
+      "evergreen",
+      "pink",
+      "wild"
+    ]
+  },
+  {
+    "ScientificName": "Rumex acetosa",
+    "DisplayedName": "Common Sorrel",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Tangy edible herb with arrow-shaped leaves; thrives in meadows.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "EnergyBoost",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "HungerResistance",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 80
+      }
+    ],
+    "Tags": [
+      "edible",
+      "meadow",
+      "sour",
+      "leafy"
+    ]
+  },
+  {
+    "ScientificName": "Veronica chamaedrys",
+    "DisplayedName": "Germander Speedwell",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "Small creeping flower with bright blue blooms and white centers.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "SpeedBoost",
+        "BaseMagnitude": 4.5,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "FocusBoost",
+        "BaseMagnitude": 2.5,
+        "BaseDuration": 40
+      }
+    ],
+    "Tags": [
+      "blue",
+      "creeping",
+      "meadow",
+      "spring"
+    ]
+  },
+  {
+    "ScientificName": "Malva sylvestris",
+    "DisplayedName": "Common Mallow",
+    "TypeName": "Herb",
+    "Reproduction": "Seed",
+    "Description": "Large purple flowers and round leaves; used in herbal remedies.",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "Healing",
+        "BaseMagnitude": 5.0,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "DefenseBoost",
+        "BaseMagnitude": 3.5,
+        "BaseDuration": 70
+      }
+    ],
+    "Tags": [
+      "purple",
+      "edible",
+      "soft",
+      "medicinal"
+    ]
   }
 ]

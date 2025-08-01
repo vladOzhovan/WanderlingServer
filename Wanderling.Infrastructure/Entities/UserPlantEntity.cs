@@ -7,7 +7,7 @@ namespace Wanderling.Infrastructure.Entities
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public Guid CatalogPlantId { get; set; }
-        public string SpeciesName { get; set; } = string.Empty;
+        public string ScientificName { get; set; } = string.Empty;
         public string DisplayedName { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
         public string Reproduction { get; set; } = string.Empty;

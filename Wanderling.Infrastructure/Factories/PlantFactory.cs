@@ -2,9 +2,9 @@
 using System.Text.Json;
 using Wanderling.Application.Interfaces;
 using Wanderling.Domain.Attributes;
+using Wanderling.Domain.Entities;
 using Wanderling.Domain.Entities.Collections.Plants;
 using Wanderling.Domain.Interfaces;
-using Wanderling.Infrastructure.Resources;
 
 namespace Wanderling.Infrastructure.Factories
 {
@@ -43,7 +43,7 @@ namespace Wanderling.Infrastructure.Factories
                 throw new ArgumentException($"Unknown plant type: {typeName}");
 
             var plantDefinition = _definitions.FirstOrDefault(d =>
-                    string.Equals(d.SpeciesKey, speciesName, StringComparison.OrdinalIgnoreCase));
+                    string.Equals(d.ScientificName, speciesName, StringComparison.OrdinalIgnoreCase));
 
             if (plantDefinition == null)
                 throw new InvalidOperationException($"Missing plant definition for {speciesName}");

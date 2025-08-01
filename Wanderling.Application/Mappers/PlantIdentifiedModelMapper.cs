@@ -11,7 +11,7 @@ namespace Wanderling.Application.Mappers
             {
                 Id = plant.Id,
                 UserId = plant.UserId ?? Guid.Empty,
-                SpeciesName = plant.SpeciesName,
+                ScientificName = plant.ScientificName,
                 DisplayedName = plant.DisplayedName,
                 Description = plant.Description,
                 Reproduction = plant.Reproduction,

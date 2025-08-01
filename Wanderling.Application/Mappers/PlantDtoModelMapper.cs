@@ -16,7 +16,7 @@ namespace Wanderling.Application.Mappers
             {
                 Id = plant.Id,
                 UserId = plant.UserId ?? Guid.Empty,
-                SpeciesName = plant.SpeciesName ?? string.Empty,
+                ScientificName = plant.ScientificName ?? string.Empty,
                 DisplayedName = plant.DisplayedName ?? string.Empty,
                 Type = metadata?.TypeKey ?? type.Name,
                 Reproduction = plant.Reproduction ?? string.Empty,
@@ -35,7 +35,7 @@ namespace Wanderling.Application.Mappers
             {
                 Id = plant.Id,
                 UserId = plant.UserId ?? Guid.Empty,
-                SpeciesName = plant.SpeciesName,
+                ScientificName = plant.ScientificName,
                 DisplayedName = plant.DisplayedName,
                 TypeName = metadata?.TypeKey ?? type.Name,
                 Reproduction = plant.Reproduction,
