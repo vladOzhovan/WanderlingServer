@@ -21,12 +21,11 @@ namespace Wanderling.Api.DependencyInjection
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,
                                                            IConfiguration configuration, IWebHostEnvironment env)
-        {
-            //var connectionString = configuration.GetConnectionString("SqliteConnection");
-            
+        { 
             var dbPath = Path.Combine(env.ContentRootPath, "..", "Wanderling.Infrastructure", "Wanderlings.db");
             var connectionString = $"Data Source={dbPath}";
 
+            services.AddMemoryCache();
             services.AddDbContext<AppDbContext>(options => options.UseSqlite(connectionString));
 
             services.AddIdentity<UserEntity, IdentityRole<Guid>>(options =>
@@ -65,7 +64,7 @@ namespace Wanderling.Api.DependencyInjection
             services.AddScoped<IPlantRepository, PlantRepository>();
             services.AddScoped<IReproduction, VegetativeReproduction>();
             services.AddScoped<IPlantCreationService, PlantCreationService>();
-            //services.AddScoped<IDiscoveredPlantCreationService, DiscoveredPlantCreationService>();
+            services.AddScoped<IDiscoveredPlantCreationService, DiscoveredPlantCreationService>();
 
             // bind configuration section to options
             services.Configure<PlantRecognitionOptions>(configuration.GetSection("PlantRecognition"));
@@ -92,7 +91,10 @@ namespace Wanderling.Api.DependencyInjection
 
             services.AddControllers();
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(options =>
+            {
+                options.SupportNonNullableReferenceTypes();
+            });
 
             return services;
         }

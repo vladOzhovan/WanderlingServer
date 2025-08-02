@@ -19,11 +19,13 @@ namespace Wanderling.Api.Controllers
             _discoveredPlantCreationService = discoveredPlantCreationService;
         }
 
-        [HttpPost("create-discovered/{userId:Guid}")]
-        public async Task<IActionResult> CreateDiscovered([FromForm] IFormFile image)
+        [HttpPost("create-discovered")]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> CreateDiscovered([FromForm] DiscoveredPlantUploadRequest request)
         {
-            var userId = User.GetUserId();
-            var result = await _discoveredPlantCreationService.CreateDiscoveredAsync(image, userId);
+            //var userId = User.GetUserId();
+            var userId = Guid.NewGuid();
+            var result = await _discoveredPlantCreationService.CreateDiscoveredAsync(request.image, userId);
 
             if (result == null)
                 return BadRequest("Plant not recognized");
@@ -48,28 +50,6 @@ namespace Wanderling.Api.Controllers
 
             return Ok(plant.ToPlantDto());
         }
-
-        //[HttpPost("create-discovered/{userId:Guid}")]
-        //public async Task<IActionResult> CreateDiscovered([FromServices] IPlantCreationService service, [FromBody] PlantCreateDto dto)
-        //{
-        //    var userId = User.GetUserId();
-
-        //    var model = new PlantCreateModel
-        //    {
-        //        SpeciesKey = dto.SpeciesName ?? string.Empty,
-        //        TypeKey = dto.TypeName ?? string.Empty,
-        //        ReproductionKey = dto.ReproductionType ?? string.Empty
-        //    };
-
-        //    var plant = await service.CreatePlantAsync(model) as Plant;
-
-        //    if (plant == null)
-        //        return BadRequest("Failed to create plant");
-
-        //    plant.Discover(userId);
-
-        //    return Ok(plant.ToPlantDto());
-        //}
 
         [HttpPost("identify")]
         [Consumes("multipart/form-data")]

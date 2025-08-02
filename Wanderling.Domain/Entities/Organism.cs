@@ -6,10 +6,10 @@ namespace Wanderling.Domain.Entities
     {
         private readonly IReproduction _reproduction;
 
-        protected Organism(string speciesName, IReproduction reproduction)
+        protected Organism(string scientificName, IReproduction reproduction)
         {
             Id = Guid.NewGuid();
-            ScientificName = speciesName;
+            ScientificName = scientificName;
             _reproduction = reproduction;
             CreatedAt = DateTime.UtcNow;
         }
@@ -21,7 +21,7 @@ namespace Wanderling.Domain.Entities
         public string Description { get; set; } = string.Empty;
         public string Reproduction => _reproduction.GetType().Name;
         public string ImageUrl { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; private set; }
         public bool IsDiscovered { get; private set; } = false;
         public DateTime? DiscoverededAt { get; private set; }
 

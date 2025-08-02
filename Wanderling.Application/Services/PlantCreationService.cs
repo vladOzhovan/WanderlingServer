@@ -1,5 +1,4 @@
 ﻿using Wanderling.Application.Interfaces;
-using Wanderling.Application.Mappers;
 using Wanderling.Application.Models;
 using Wanderling.Domain.Entities.Collections.Plants;
 using Wanderling.Domain.Interfaces;
@@ -10,11 +9,9 @@ namespace Wanderling.Application.Services
     public class PlantCreationService : IPlantCreationService
     {
         private readonly IOrganismFactory _plantFactory;
-        private readonly IPlantRepository _repository;
-        public PlantCreationService(IOrganismFactory plantFactory, IPlantRepository repository)
+        public PlantCreationService(IOrganismFactory plantFactory)
         {
             _plantFactory = plantFactory;
-            _repository = repository;
         }
 
         public async Task<IOrganism> CreatePlantAsync(PlantCreateModel model)
@@ -28,8 +25,10 @@ namespace Wanderling.Application.Services
             };
 
             var plant = _plantFactory.Create(model.SpeciesKey, model.TypeKey, reproduction) as Plant;
-            var plantModel = plant.ToPlantModel();
-            await _repository.AddToUserAsync(plantModel);
+
+            if (plant == null)
+                throw new Exception("Faild to create a Plant");
+
             return await Task.FromResult(plant);
         }
     }

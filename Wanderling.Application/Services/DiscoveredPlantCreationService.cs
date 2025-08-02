@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using Wanderling.Application.Interfaces;
@@ -11,21 +12,62 @@ namespace Wanderling.Application.Services
 {
     public class DiscoveredPlantCreationService : IDiscoveredPlantCreationService
     {
+        private readonly IMemoryCache _cache;
         private readonly IPlantRepository _repository;
         private readonly IPlantCreationService _creationService;
         private readonly IPlantRecognitionService _recognitionService;
         private readonly ILogger<DiscoveredPlantCreationService> _logger;
 
         public DiscoveredPlantCreationService(
+            IMemoryCache cache,
             ILogger<DiscoveredPlantCreationService> logger,
             IPlantRepository repository,
             IPlantCreationService creationService,
             IPlantRecognitionService recognitionService)
         {
+            _cache = cache;
             _logger = logger;
             _repository = repository;
             _creationService = creationService;
             _recognitionService = recognitionService;
+        }
+
+        private const string PlantsRegisterCacheKey = "PlantsRegister";
+
+        private List<PlantDefinition>? GetPlantsRegister()
+        {
+            var plantsReg = _cache.GetOrCreate(PlantsRegisterCacheKey, entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
+                var path = Path.Combine(AppContext.BaseDirectory, "Resources", "plantsRegister.json");
+
+                try
+                {
+                    if (!File.Exists(path))
+                        throw new FileNotFoundException("plantsRegister.json not found");
+
+                    var json = File.ReadAllText(path);
+
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+
+                    var result = JsonSerializer.Deserialize<List<PlantDefinition>>(json, options);
+
+                    if (result == null || result.Count == 0)
+                        throw new InvalidOperationException("plantsRegister.json is empty or invalid");
+
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Failed to load plantsRegister.json");
+                    throw;
+                }
+            });
+
+            return plantsReg;
         }
 
         public async Task<PlantIdentifiedModel> CreateDiscoveredAsync(IFormFile image, Guid userId)
@@ -47,7 +89,7 @@ namespace Wanderling.Application.Services
             }
             catch (JsonException ex)
             {
-                _logger.LogError($"Failed to deserialize {typeof(PlantApiResponse)}");
+                _logger.LogError(ex, $"Failed to deserialize {typeof(PlantApiResponse)}");
                 throw new InvalidOperationException("Plant recognition error", ex);
             }
 
@@ -55,34 +97,8 @@ namespace Wanderling.Application.Services
 
             if (string.IsNullOrWhiteSpace(plantScientificName))
                 throw new Exception("Unknown plant");
-
-            var plantsRegisterPath = Path.Combine(AppContext.BaseDirectory, "Resources", "plantsRegister.json");
             
-            if (!File.Exists(plantsRegisterPath))
-                throw new Exception("plantsRegister.json not found");
-
-            
-            List<PlantDefinition>? register;
-
-            try
-            {
-                var jsonReg = File.ReadAllText(plantsRegisterPath);
-
-                register = JsonSerializer.Deserialize<List<PlantDefinition>>(jsonReg, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-            }
-            catch (IOException ex)
-            {
-                _logger.LogError(ex, "Failed to read plantsRegister.json");
-                throw new FileNotFoundException("Error while reading plantsRegister.json", ex);
-            }
-            catch (JsonException ex)
-            {
-                _logger.LogError(ex, "plantsRegister.json has invalid format");
-                throw new JsonException("Invalid plantsRegister.json format", ex);
-            }
+            List<PlantDefinition>? register = GetPlantsRegister();
 
             var definition = register?.FirstOrDefault(p => 
                 string.Equals(p.ScientificName, plantScientificName, StringComparison.OrdinalIgnoreCase));
@@ -99,20 +115,27 @@ namespace Wanderling.Application.Services
 
             var plant = await _creationService.CreatePlantAsync(model) as Plant;
 
-            if (plant == null)
-                throw new Exception("Faild to create plant");
+            if (plant != null)
+            {
+                plant.Discover(userId);
+            }
+            else
+            {
+                throw new Exception("Failed to create plant");
+            }
+                
 
             var identifiedPlant = plant.ToPlantIdentifiedModel();
 
             if (identifiedPlant == null)
-                throw new Exception($"Faild to convert from {typeof(Plant)} to {typeof(PlantIdentifiedModel)}");
+                throw new Exception($"Failed to convert from {typeof(Plant)} to {typeof(PlantIdentifiedModel)}");
 
             var userPlantModel = plant.ToModel();
 
             if (userPlantModel == null)
-                throw new Exception($"Faild to convert from {typeof(PlantIdentifiedModel)} to {typeof(UserPlantModel)}");
+                throw new Exception($"Failed to convert from {typeof(PlantIdentifiedModel)} to {typeof(UserPlantModel)}");
 
-            _repository.AddToUserAsync(userPlantModel);
+            await _repository.AddToUserAsync(userPlantModel);
 
             return identifiedPlant;
         }
