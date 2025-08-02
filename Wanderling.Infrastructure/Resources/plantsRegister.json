@@ -39,6 +39,55 @@
     "Tags": [ "common", "flower crown", "fluffy", "herb" ]
   },
   {
+    "ScientificName": "Taraxacum officinale",
+    "DisplayedName": "Common Dandelion",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "Bright yellow flower that turns into white puffball; thrives in lawns and roadsides.",
+    "Rarity": "Common",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "EnergyBoost",
+        "BaseMagnitude": 4.5,
+        "BaseDuration": 90
+      },
+      {
+        "Key": "DigestionAid",
+        "BaseMagnitude": 3.0,
+        "BaseDuration": 70
+      }
+    ],
+    "Tags": [
+      "common",
+      "edible",
+      "yellow",
+      "puff"
+    ]
+  },
+  {
+    "ScientificName": "Taraxacum dissectum",
+    "DisplayedName": "Dissected Dandelion",
+    "TypeName": "Flower",
+    "Reproduction": "Seed",
+    "Description": "A rare species of dandelion with deeply divided leaves and bright yellow flowers. Found mainly in moist meadows and marshy areas.",
+    "Rarity": "Uncommon",
+    "ImageUrl": "",
+    "Effects": [
+      {
+        "Key": "FocusBoost",
+        "BaseMagnitude": 4.0,
+        "BaseDuration": 60
+      },
+      {
+        "Key": "DigestionAid",
+        "BaseMagnitude": 3.5,
+        "BaseDuration": 70
+      }
+    ],
+    "Tags": [ "dandelion", "wetland", "yellow", "rare", "cut-leaf" ]
+  },
+  {
     "ScientificName": "Trifolium repens",
     "DisplayedName": "White Clover",
     "TypeName": "Herb",
@@ -281,6 +330,7 @@
     "TypeName": "DeciduousTree",
     "Reproduction": "Seed",
     "Description": "Medium-sized tree thriving in wet soils near rivers and wetlands.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -302,6 +352,7 @@
     "TypeName": "Herb",
     "Reproduction": "Seed",
     "Description": "Edible umbellifer found on hedgerows and waste ground near coasts.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -323,6 +374,7 @@
     "TypeName": "Flower",
     "Reproduction": "Seed",
     "Description": "Tall plant with tubular purple flowers; toxic but used in heart medicine.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -344,6 +396,7 @@
     "TypeName": "Flower",
     "Reproduction": "Vegetative",
     "Description": "Fragrant white bell-shaped flowers; grows in shady woodlands.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -365,6 +418,7 @@
     "TypeName": "Flower",
     "Reproduction": "Seed",
     "Description": "Early-blooming flower with pale yellow petals; often seen in meadows and woodlands.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -386,6 +440,7 @@
     "TypeName": "Flower",
     "Reproduction": "Vegetative",
     "Description": "White woodland flower spreading via rhizomes; blooms in early spring.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -407,6 +462,7 @@
     "TypeName": "Shrub",
     "Reproduction": "Seed",
     "Description": "Climbing shrub with sweetly scented tubular flowers; attracts pollinators.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -428,6 +484,7 @@
     "TypeName": "Flower",
     "Reproduction": "Seed",
     "Description": "Striking blue flowered plant covered in bristles; thrives in dry grasslands.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -449,6 +506,7 @@
     "TypeName": "Herb",
     "Reproduction": "Seed",
     "Description": "Spotted leaves and pink-blue flowers; associated with respiratory health.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -470,6 +528,7 @@
     "TypeName": "Herb",
     "Reproduction": "Seed",
     "Description": "Tall umbellifer with large leaves; widespread in meadows and roadsides.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -491,6 +550,7 @@
     "TypeName": "Flower",
     "Reproduction": "Seed",
     "Description": "Fragrant blue flower carpeting spring woodlands in Western Europe.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -512,6 +572,7 @@
     "TypeName": "Flower",
     "Reproduction": "Seed",
     "Description": "Iconic red flower growing in disturbed soils and fields.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -533,6 +594,7 @@
     "TypeName": "Herb",
     "Reproduction": "Seed",
     "Description": "Low-growing yellow-flowered herb often found in grasslands and meadows.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -554,6 +616,7 @@
     "TypeName": "Herb",
     "Reproduction": "Seed",
     "Description": "Tall white-flowered umbellifer that grows along roadsides and woodland edges.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -575,6 +638,7 @@
     "TypeName": "Herb",
     "Reproduction": "Seed",
     "Description": "Edible biennial herb with garlic-scented leaves; common in woodlands.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -596,6 +660,7 @@
     "TypeName": "Flower",
     "Reproduction": "Seed",
     "Description": "Large daisy-like flower seen in meadows and grassy roadsides.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -617,6 +682,7 @@
     "TypeName": "Flower",
     "Reproduction": "Seed",
     "Description": "Glossy yellow flower found abundantly in fields and damp meadows.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -633,37 +699,12 @@
     "Tags": [ "yellow", "meadow", "glossy", "common" ]
   },
   {
-    "ScientificName": "Taraxacum officinale",
-    "DisplayedName": "Common Dandelion",
-    "TypeName": "Flower",
-    "Reproduction": "Seed",
-    "Description": "Bright yellow flower that turns into white puffball; thrives in lawns and roadsides.",
-    "ImageUrl": "",
-    "Effects": [
-      {
-        "Key": "EnergyBoost",
-        "BaseMagnitude": 4.5,
-        "BaseDuration": 90
-      },
-      {
-        "Key": "DigestionAid",
-        "BaseMagnitude": 3.0,
-        "BaseDuration": 70
-      }
-    ],
-    "Tags": [
-      "common",
-      "edible",
-      "yellow",
-      "puff"
-    ]
-  },
-  {
     "ScientificName": "Mentha aquatica",
     "DisplayedName": "Water Mint",
     "TypeName": "Herb",
     "Reproduction": "Vegetative",
     "Description": "Aromatic herb growing in wet soils near streams and ponds.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -690,6 +731,7 @@
     "TypeName": "Herb",
     "Reproduction": "Seed",
     "Description": "Rosette-forming herb with narrow leaves and flower spikes; often in grasslands.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -716,6 +758,7 @@
     "TypeName": "Herb",
     "Reproduction": "Seed",
     "Description": "Tiny-leaved edible plant common in gardens and cultivated ground.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -742,6 +785,7 @@
     "TypeName": "Herb",
     "Reproduction": "Vegetative",
     "Description": "Low-growing groundcover with spikes of blue flowers; common in shady habitats.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -768,6 +812,7 @@
     "TypeName": "Herb",
     "Reproduction": "Seed",
     "Description": "Yellow-flowered herb known for medicinal and mood-lifting properties.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -794,6 +839,7 @@
     "TypeName": "Shrub",
     "Reproduction": "Seed",
     "Description": "Small evergreen shrub with pink-purple flowers, common in heathlands.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -820,6 +866,7 @@
     "TypeName": "Herb",
     "Reproduction": "Seed",
     "Description": "Tangy edible herb with arrow-shaped leaves; thrives in meadows.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -846,6 +893,7 @@
     "TypeName": "Flower",
     "Reproduction": "Seed",
     "Description": "Small creeping flower with bright blue blooms and white centers.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {
@@ -872,6 +920,7 @@
     "TypeName": "Herb",
     "Reproduction": "Seed",
     "Description": "Large purple flowers and round leaves; used in herbal remedies.",
+    "Rarity": "Common",
     "ImageUrl": "",
     "Effects": [
       {

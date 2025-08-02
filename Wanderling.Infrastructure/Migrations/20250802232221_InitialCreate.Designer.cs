@@ -11,7 +11,7 @@ using Wanderling.Infrastructure.Data;
 namespace Wanderling.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250801232702_InitialCreate")]
+    [Migration("20250802232221_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

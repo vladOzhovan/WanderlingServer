@@ -36,4 +36,11 @@
     <ProjectReference Include="..\Wanderling.Domain\Wanderling.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+	<Content Include="Resources\plantsRegister.json">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+  </ItemGroup>
+
+
 </Project>

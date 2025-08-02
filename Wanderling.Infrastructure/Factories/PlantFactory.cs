@@ -58,6 +58,7 @@ namespace Wanderling.Infrastructure.Factories
                     plant.Description = plantDefinition.Description;
                     plant.Rarity = plantDefinition.Rarity;
                     plant.Effects = plantDefinition.Effects;
+                    plant.ImageUrl = plantDefinition.ImageUrl;
                 }
 
                 return plant;
