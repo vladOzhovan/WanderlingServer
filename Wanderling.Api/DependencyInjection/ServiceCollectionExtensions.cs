@@ -54,7 +54,7 @@ namespace Wanderling.Api.DependencyInjection
                     ValidIssuer = configuration["Jwt:Issuer"],
                     ValidAudience = configuration["Jwt:Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(
-                        System.Text.Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"])),
+                        System.Text.Encoding.UTF8.GetBytes(configuration["Jwt:SecurityKey"])),
                     RoleClaimType = ClaimTypes.Role
                 };
             });
@@ -65,6 +65,7 @@ namespace Wanderling.Api.DependencyInjection
             services.AddScoped<IReproduction, VegetativeReproduction>();
             services.AddScoped<IPlantCreationService, PlantCreationService>();
             services.AddScoped<IDiscoveredPlantCreationService, DiscoveredPlantCreationService>();
+            services.AddScoped<ITokenService, TokenService>();
 
             // bind configuration section to options
             services.Configure<PlantRecognitionOptions>(configuration.GetSection("PlantRecognition"));

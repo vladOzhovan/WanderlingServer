@@ -5,35 +5,34 @@ namespace Wanderling.Infrastructure.Mappers
 {
     public static class UserMapper
     {
-        public static UserEntity ToEntity(this User user)
+        public static UserEntity ToEntity(this UserDomain userDomain)
         {
             return new UserEntity
             {
-                Id = user.Id,
-                UserName = user.UserName,
-                Email = user.Email,
-                PasswordHash = user.PasswordHash,
-                PhoneNumber = user.PhoneNumber,
-                CreatedAt = user.CreatedAt,
+                Id = userDomain.Id,
+                UserName = userDomain.UserName,
+                Email = userDomain.Email,
+                PasswordHash = userDomain.PasswordHash,
+                PhoneNumber = userDomain.PhoneNumber,
+                CreatedAt = userDomain.CreatedAt,
 
             };
         }
 
-        public static User ToDomainUser(this UserEntity entity)
+        public static UserDomain ToDomainUser(this UserEntity userEntity)
         {
-            var user = User.Create(
-                entity.Id,
-                entity.UserName,
-                entity.Email,
-                entity.PasswordHash
+            var userDomain = UserDomain.Create(
+                userEntity?.UserName ?? string.Empty,
+                userEntity?.Email ?? string.Empty,
+                userEntity?.PasswordHash ?? string.Empty
             );
 
-            user.AssignPhone(entity.PhoneNumber);
-            user.FirstName = entity.FirstName;
-            user.SecondName = entity.SecondName;
-            user.CreatedAt = entity.CreatedAt;
+            userDomain.AssignPhone(userEntity?.PhoneNumber ?? string.Empty);
+            userDomain.FirstName = userEntity?.FirstName ?? string.Empty;
+            userDomain.SecondName = userEntity?.SecondName ?? string.Empty;
+            userDomain.CreatedAt = userEntity?.CreatedAt ?? DateTime.MinValue;
 
-            return user;
+            return userDomain;
         }
     }
 }

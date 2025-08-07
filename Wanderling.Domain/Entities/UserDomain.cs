@@ -1,18 +1,22 @@
 ﻿namespace Wanderling.Domain.Entities
 {
-    public class User
+    public class UserDomain
     {
-        public User(Guid id, string userName, string email, string passwordHash)
+        public UserDomain(string userName, string email, string passwordHash, string role)
         {
-            Id = id;
+            Id = Guid.NewGuid();
             UserName = userName;
             Email = email;
             PasswordHash = passwordHash;
+            Role = role;
+            CreatedAt = DateTime.UtcNow;
         }
         public Guid Id { get; private set; }
+        public DateTime CreatedAt { get; set; }
         public string UserName { get; private set; }
         public string Email { get; private set; }
         public string PasswordHash { get; private set; }
+        public string Role { get; private set; }
         public string PhoneNumber { get; private set; }
         public string? FirstName { get; set; }
         public string? SecondName { get; set; }
@@ -25,10 +29,9 @@
                 return $"{first} {second}".Trim();
             }
         }
-        public DateTime CreatedAt { get; set; }
 
-        public static User Create(Guid id, string userName, string email, string passwordHash) =>
-            new User(id, userName, email, passwordHash);
+        public static UserDomain Create(string userName, string email, string passwordHash, string role) =>
+            new UserDomain(userName, email, passwordHash, role);
 
         public void AssignPhone(string phoneNumber)
         {

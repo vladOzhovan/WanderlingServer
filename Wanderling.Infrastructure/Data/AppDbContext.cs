@@ -16,34 +16,52 @@ namespace Wanderling.Infrastructure.Data
         public DbSet<UserEntity> Users {  get; set; }
         public DbSet<PlantEntity> AllPlants {  get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(builder);
 
-            modelBuilder.Entity<UserPlantEntity>().HasKey(p => p.Id);
+            List<IdentityRole<Guid>> roles = new List<IdentityRole<Guid>>
+            {
+                new IdentityRole<Guid>
+                {
+                    //Id = Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
+                },
 
-            modelBuilder.Ignore<Plant>();
+                new IdentityRole<Guid>
+                {
+                    //Id = Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                    Name = "User",
+                    NormalizedName = "USER"
+                }
+            };
+
+            builder.Entity<IdentityRole<Guid>>().HasData(roles);
+
+            builder.Entity<UserPlantEntity>().HasKey(p => p.Id);
+            builder.Ignore<Plant>();
 
             var plantTypes = Assembly.GetAssembly(typeof(Plant)).GetTypes()
                 .Where(t => t.IsSubclassOf(typeof(Plant)) && !t.IsAbstract);
 
             foreach (var type in  plantTypes)
-                modelBuilder.Ignore(type);
+                builder.Ignore(type);
 
             var fungusTypes = Assembly.GetAssembly(typeof(Fungus)).GetTypes()
                 .Where(t => t.IsSubclassOf(typeof(Fungus)) && !t.IsAbstract);
 
             foreach (var type in fungusTypes)
-                modelBuilder.Ignore(type);
+                builder.Ignore(type);
 
-            modelBuilder.Entity<UserPlantEntity>().OwnsMany(p => p.Effects, a =>
+            builder.Entity<UserPlantEntity>().OwnsMany(p => p.Effects, a =>
             {
                 a.WithOwner().HasForeignKey("PlantId");
                 a.Property<int>("Id");
                 a.HasKey("Id");
             });
 
-            modelBuilder.Entity<PlantEntity>().OwnsMany(p => p.Effects, a =>
+            builder.Entity<PlantEntity>().OwnsMany(p => p.Effects, a =>
             {
                 a.WithOwner().HasForeignKey("PlantId");
                 a.Property<int>("Id");
