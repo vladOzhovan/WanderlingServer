@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Wanderling.Application.Dtos;
 using Wanderling.Application.Interfaces;
-using Wanderling.Domain.Entities;
 using Wanderling.Infrastructure.Entities;
 
 namespace Wanderling.Infrastructure.Services
@@ -13,10 +12,16 @@ namespace Wanderling.Infrastructure.Services
         private readonly IConfiguration _config;
         private readonly ITokenService _tokenService;
         private readonly UserManager<UserEntity> _userManager;
+        private readonly SignInManager<UserEntity> _signInManager;
 
-        public UserAccountService(UserManager<UserEntity> userManager, IConfiguration config, ITokenService tokenService)
+        public UserAccountService(
+            UserManager<UserEntity> userManager,
+            SignInManager<UserEntity> signinManager,
+            IConfiguration config, 
+            ITokenService tokenService)
         {
             _userManager = userManager;
+            _signInManager = signinManager;
             _config = config;
             _tokenService = tokenService;
         }
@@ -46,8 +51,6 @@ namespace Wanderling.Infrastructure.Services
             if (!roleResult.Succeeded)
                 return Result.Fail<AuthenticationDto>(roleResult.Errors.Select(e => e.Description));
 
-            var userDomain = UserDomain.Create(dto.UserName, dto.Email, userEntity.PasswordHash, "User");
-
             var tokenDto = new TokenDto
             {
                 UserId = userEntity.Id,
@@ -68,6 +71,43 @@ namespace Wanderling.Infrastructure.Services
             };
 
             return Result.Ok(authDto);
+        }
+
+        public async Task<Result<AuthenticationDto>> LoginAsync(LoginDto dto)
+        {
+            var user = await _userManager.FindByEmailAsync(dto.Email);
+
+            if (user == null)
+                return Result.Fail<AuthenticationDto>("Invalid email or password");
+
+            var passwordResult = await _signInManager.CheckPasswordSignInAsync(user, dto.Password, false);
+
+            if (!passwordResult.Succeeded)
+                return Result.Fail<AuthenticationDto>("Invalid email or password");
+
+            var roles = await _userManager.GetRolesAsync(user);
+            var role = roles.FirstOrDefault() ?? "User";
+
+            var tokenDto = new TokenDto
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                Role = role
+            };
+
+            var token = _tokenService.GenerateToken(tokenDto);
+
+            var autDto = new AuthenticationDto
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                Role = role,
+                Token = token
+            };
+
+            return Result.Ok(autDto);
         }
     }
 }

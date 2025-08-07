@@ -24,14 +24,16 @@ namespace Wanderling.Infrastructure.Data
             {
                 new IdentityRole<Guid>
                 {
-                    //Id = Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                    //Id = Guid.Parse("9a5f8dc6-1a26-4f27-b52e-ffed5573e178"),
+                    Id = Guid.Parse("11111111-1111-1111-1111-111111111111"),
                     Name = "Admin",
                     NormalizedName = "ADMIN"
                 },
 
                 new IdentityRole<Guid>
                 {
-                    //Id = Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                    //Id = Guid.Parse("1c1d88c6-6fbe-4d9c-932b-d2a0c2eb39f1"),
+                    Id = Guid.Parse("22222222-2222-2222-2222-222222222222"),
                     Name = "User",
                     NormalizedName = "USER"
                 }

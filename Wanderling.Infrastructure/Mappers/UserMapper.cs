@@ -24,7 +24,8 @@ namespace Wanderling.Infrastructure.Mappers
             var userDomain = UserDomain.Create(
                 userEntity?.UserName ?? string.Empty,
                 userEntity?.Email ?? string.Empty,
-                userEntity?.PasswordHash ?? string.Empty
+                userEntity?.PasswordHash ?? string.Empty,
+                "User"
             );
 
             userDomain.AssignPhone(userEntity?.PhoneNumber ?? string.Empty);
