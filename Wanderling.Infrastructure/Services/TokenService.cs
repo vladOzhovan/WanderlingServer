@@ -23,8 +23,10 @@ namespace Wanderling.Infrastructure.Services
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Name, dto.UserName),
-                new Claim(JwtRegisteredClaimNames.Email, dto.Email)
+                new Claim(JwtRegisteredClaimNames.Sub, dto.UserId.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, dto.Email),
+                new Claim(JwtRegisteredClaimNames.UniqueName, dto.UserName),
+                new Claim(ClaimTypes.Role, dto.Role),
             };
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);

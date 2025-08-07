@@ -23,7 +23,7 @@ namespace Wanderling.Infrastructure.Services
 
         public async Task<Result<AuthenticationDto>> RegisterUserAsync(RegisterDto dto)
         {
-            var existingUser = _userManager.FindByEmailAsync(dto.Email);
+            var existingUser = await _userManager.FindByEmailAsync(dto.Email);
 
             if (existingUser != null)
                 return Result.Fail<AuthenticationDto>("User already exists");
@@ -64,7 +64,7 @@ namespace Wanderling.Infrastructure.Services
                 UserName = userEntity.UserName,
                 Email = userEntity.Email,
                 Role = "User",
-                Token = ""
+                Token = token
             };
 
             return Result.Ok(authDto);
