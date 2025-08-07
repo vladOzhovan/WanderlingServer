@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Wanderling.Application.Dtos;
+using Wanderling.Application.Interfaces;
 using Wanderling.Infrastructure.Services;
 
 namespace Wanderling.Api.Controllers
@@ -8,9 +9,9 @@ namespace Wanderling.Api.Controllers
     [Route("[controller]")]
     public class AccountController : ControllerBase
     {
-        private readonly UserAccountService _accountService;
+        private readonly IUserAccountService _accountService;
 
-        public AccountController(UserAccountService accountService)
+        public AccountController(IUserAccountService accountService)
         {
             _accountService = accountService;
         }
@@ -23,6 +24,16 @@ namespace Wanderling.Api.Controllers
             return result.IsSuccess
                 ? Ok(result.Value)
                 : BadRequest(result.Errors);
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginDto dto)
+        {
+            var result = await _accountService.LoginAsync(dto);
+
+            return result.IsSuccess 
+                ? Ok(result.Value)
+                : Unauthorized(result.Errors);
         }
     }
 }

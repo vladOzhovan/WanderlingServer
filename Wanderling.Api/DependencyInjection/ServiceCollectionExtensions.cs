@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Security.Claims;
 using Wanderling.Application.Interfaces;
 using Wanderling.Application.Services;
@@ -11,7 +13,6 @@ using Wanderling.Infrastructure.Data;
 using Wanderling.Infrastructure.Entities;
 using Wanderling.Infrastructure.Factories;
 using Wanderling.Infrastructure.Repositories;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Wanderling.Infrastructure.Services;
 
 
@@ -66,6 +67,7 @@ namespace Wanderling.Api.DependencyInjection
             services.AddScoped<IPlantCreationService, PlantCreationService>();
             services.AddScoped<IDiscoveredPlantCreationService, DiscoveredPlantCreationService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserAccountService, UserAccountService>();
 
             // bind configuration section to options
             services.Configure<PlantRecognitionOptions>(configuration.GetSection("PlantRecognition"));
@@ -92,9 +94,36 @@ namespace Wanderling.Api.DependencyInjection
 
             services.AddControllers();
             services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
+
             services.AddSwaggerGen(options =>
             {
                 options.SupportNonNullableReferenceTypes();
+
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please enter a valid token",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "Bearer"
+                });
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[]{ }
+                    }
+                });
             });
 
             return services;
