@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Wanderling.Api.Dtos;
 using Wanderling.Application.Interfaces;
 using Wanderling.Application.Mappers;
@@ -66,9 +67,9 @@ namespace Wanderling.Api.Controllers
                 imageBytes = stream.ToArray();
             }
 
-            var recognitionresult = await recognitionService.IdentifyPlantAsync(imageBytes);
+            var recognitionResult = await recognitionService.IdentifyPlantAsync(imageBytes);
 
-            return Ok(recognitionresult);
+            return Ok(recognitionResult);
         }
     }
 }

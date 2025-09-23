@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Wanderling.Application.Dtos;
 using Wanderling.Application.Interfaces;
-using Wanderling.Infrastructure.Services;
 
 namespace Wanderling.Api.Controllers
 {

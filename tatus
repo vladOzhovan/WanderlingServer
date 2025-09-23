@@ -1,0 +1,125 @@
+[33mcommit 5fe6c6bac94398922af502907dc89a3fb6418103[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/inventory[m[33m, [m[1;31morigin/feature/inventory[m[33m, [m[1;31morigin/feature/auth[m[33m, [m[1;31morigin/dev[m[33m, [m[1;32mfeature/auth[m[33m, [m[1;32mdev[m[33m)[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Thu Aug 7 20:57:12 2025 +0200
+
+    Before mergin with dev
+
+[33mcommit f6814c186e94ce1838ced0bba294dded327ca7c7[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Thu Aug 7 20:52:04 2025 +0200
+
+    Registration and Authentication work
+
+[33mcommit 5cf99668087075e3b9e7d24de91cd66710a5ca19[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Thu Aug 7 04:45:37 2025 +0200
+
+    UserAccountService fixed
+
+[33mcommit 7d20c3c6dcae5327f6132ebc804077bc6a14dbe3[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Thu Aug 7 04:23:40 2025 +0200
+
+    UserAccountService, TokenService
+
+[33mcommit 25277fbaccbcf631d259b31c88f16f8fe385258a[m[33m ([m[1;31morigin/feature/PlantRecognitionService[m[33m, [m[1;32mfeature/PlantRecognitionService[m[33m)[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Sun Aug 3 01:33:15 2025 +0200
+
+    Go to dev
+
+[33mcommit 4a5b55356a7d67fd842d7740ea7ad26554dd3b7a[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Sun Aug 3 01:23:22 2025 +0200
+
+    CreateDiscovered works
+
+[33mcommit 2347846ef13b1b80ecc3204ff4adf0a8f1cbebbd[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Sat Aug 2 01:58:41 2025 +0200
+
+    DiscoveredPlantCreationService.GetPlantsRegister() added, IMemoryCache
+
+[33mcommit 5f651084a9a5bd44abaa37665842f80bad1a59d3[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Sat Aug 2 01:13:08 2025 +0200
+
+    DiscoveredPlantCreationService.CreateDiscoveredAsync – try/catch and logger added
+
+[33mcommit 3497f78f68952da2e718645e08863bfb6752c88c[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Fri Aug 1 16:05:01 2025 +0200
+
+    DiscoveredPlantCreationService, deserialization to PlantDefinition (moved to Domain)
+
+[33mcommit 9bafbec289fa1e4ac419ba0daffc06f65a7272dd[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Thu Jul 31 20:47:18 2025 +0200
+
+    CreateDiscoveredAsync is in development
+
+[33mcommit b0800d68c2b192e251f18a342a230f75125b8600[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Thu Jul 31 01:18:56 2025 +0200
+
+    DiscoveredPlantCreationService
+
+[33mcommit bf18fab2c517cfdec574802956115678ad153804[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Wed Jul 30 17:01:52 2025 +0200
+
+    Plant recognition With Plant.id works. PlantsController.Identify changed (IFormFile without [FromForm]
+
+[33mcommit ad3d309f6a52e74e1d26bfa9008d74cf98ef7601[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Sat Jul 26 21:34:39 2025 +0200
+
+    PlantsController.Identify
+
+[33mcommit 16663c1bfcb761a375e051e07d8faa11a3cb3f5f[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Sat Jul 26 19:58:12 2025 +0200
+
+    PlantRecognitionService, IdentifyPlantAsync
+
+[33mcommit 709219760a1ef6bb7b12a2684791c50bd740981c[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Sat Jul 26 00:05:19 2025 +0200
+
+    PlantRecognitionService
+
+[33mcommit 3f9b03148de797777b0294667b10690423d02fa3[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Mon Jul 14 20:42:11 2025 +0200
+
+    PlantDefinition, PlantEffect | Next step – PlantFactory with plantReg.json
+
+[33mcommit 0f495b681eb82d55aaf94d324a38b5c76718b432[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Sun Jul 13 21:19:18 2025 +0200
+
+    PlantRepository, PlantMapper
+
+[33mcommit ce9105d1353ddfe0872a76d507853a84b40dcd02[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Sun Jul 13 19:45:12 2025 +0200
+
+    PlantFactory, _plantRegistry
+
+[33mcommit 61331dee60e1ec66db3acfb71c208c57bb5f1b66[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Thu Jul 10 22:08:06 2025 +0200
+
+    PlantFactory, PlantCreationService
+
+[33mcommit dd5d61988398d65cae38935122300b9d56f71fa9[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Sun Jul 6 14:40:31 2025 +0200
+
+    Add organism factory with dynamic config generation using attributes
+
+[33mcommit ad5d7989f1154ec2f2e19079b52c5f5a29f1ddf8[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Vladimir <vovchik.v.kf@gmail.com>
+Date:   Wed Jul 2 19:54:11 2025 +0200
+
+    Initial commit
