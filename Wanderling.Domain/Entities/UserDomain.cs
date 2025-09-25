@@ -2,14 +2,14 @@
 {
     public class UserDomain
     {
-        public UserDomain(string userName, string email, string passwordHash, string role)
+        public UserDomain(string userName, string email, string passwordHash, string role, DateTime createdAt)
         {
             Id = Guid.NewGuid();
             UserName = userName;
             Email = email;
             PasswordHash = passwordHash;
             Role = role;
-            CreatedAt = DateTime.UtcNow;
+            CreatedAt = createdAt;
         }
         public Guid Id { get; private set; }
         public DateTime CreatedAt { get; set; }
@@ -17,7 +17,7 @@
         public string Email { get; private set; }
         public string PasswordHash { get; private set; }
         public string Role { get; private set; }
-        public string PhoneNumber { get; private set; }
+        public string? PhoneNumber { get; private set; }
         public string? FirstName { get; set; }
         public string? SecondName { get; set; }
         public string? FullName
@@ -30,8 +30,8 @@
             }
         }
 
-        public static UserDomain Create(string userName, string email, string passwordHash, string role) =>
-            new UserDomain(userName, email, passwordHash, role);
+        public static UserDomain Create(string userName, string email, string passwordHash, string role, DateTime createdAt) =>
+            new UserDomain(userName, email, passwordHash, role, createdAt);
 
         public void AssignPhone(string phoneNumber)
         {

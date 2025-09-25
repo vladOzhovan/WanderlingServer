@@ -6,6 +6,12 @@ using Wanderling.Domain.Reproduction;
 
 namespace Wanderling.Application.Services
 {
+    /// <summary>
+    /// Defines a service for creating plant organisms based on the specified creation model.
+    /// </summary>
+    /// <remarks>This interface provides an abstraction for creating plant instances asynchronously. 
+    /// Implementations of this service are responsible for validating the input model and  returning a fully
+    /// initialized plant organism.</remarks>
     public class PlantCreationService : IPlantCreationService
     {
         private readonly IOrganismFactory _plantFactory;

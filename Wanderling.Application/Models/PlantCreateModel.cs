@@ -1,5 +1,8 @@
 ﻿namespace Wanderling.Application.Models
 {
+    /// <summary>
+    /// Model for creating a domain entity – Plant
+    /// </summary>
     public class PlantCreateModel
     {
         public string SpeciesKey { get; set; } = string.Empty;

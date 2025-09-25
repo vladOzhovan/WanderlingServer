@@ -1,5 +1,8 @@
 ﻿namespace Wanderling.Domain.Entities
 {
+    /// <summary>
+    /// Entity for the plant deserialized from local json register
+    /// </summary>
     public class PlantDefinition
     {
         public string ScientificName { get; set; } = string.Empty;

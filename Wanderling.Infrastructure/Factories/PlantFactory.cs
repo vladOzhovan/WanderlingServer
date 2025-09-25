@@ -8,6 +8,14 @@ using Wanderling.Domain.Interfaces;
 
 namespace Wanderling.Infrastructure.Factories
 {
+    /// <summary>
+    /// Provides functionality to create and manage plant organisms based on their species and type.
+    /// </summary>
+    /// <remarks>The <see cref="PlantFactory"/> class is responsible for creating instances of plants that
+    /// derive from the <see cref="Plant"/> base class. It uses a mapping of plant type keys to their corresponding
+    /// concrete types, which are dynamically loaded from the assembly containing the <see cref="Plant"/> class. Plant
+    /// definitions, including metadata such as displayed name, description, rarity, and effects, are loaded from a JSON
+    /// file specified during construction.</remarks>
     public class PlantFactory : IOrganismFactory
     {
         private readonly IDictionary<string, Type> _plantTypesMap;

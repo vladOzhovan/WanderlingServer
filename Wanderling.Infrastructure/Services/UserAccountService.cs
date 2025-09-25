@@ -54,7 +54,7 @@ namespace Wanderling.Infrastructure.Services
             var tokenDto = new TokenDto
             {
                 UserId = userEntity.Id,
-                UserName = userEntity.UserName,
+                UserName = userEntity.UserName ?? string.Empty,
                 Email = userEntity.Email,
                 Role = "User"
             };
@@ -64,7 +64,7 @@ namespace Wanderling.Infrastructure.Services
             var authDto = new AuthenticationDto
             {
                 UserId = userEntity.Id,
-                UserName = userEntity.UserName,
+                UserName = userEntity.UserName ?? string.Empty,
                 Email = userEntity.Email,
                 Role = "User",
                 Token = token
@@ -91,8 +91,8 @@ namespace Wanderling.Infrastructure.Services
             var tokenDto = new TokenDto
             {
                 UserId = user.Id,
-                UserName = user.UserName,
-                Email = user.Email,
+                UserName = user.UserName ?? string.Empty,
+                Email = user.Email ?? string.Empty,
                 Role = role
             };
 
@@ -101,8 +101,8 @@ namespace Wanderling.Infrastructure.Services
             var autDto = new AuthenticationDto
             {
                 UserId = user.Id,
-                UserName = user.UserName,
-                Email = user.Email,
+                UserName = user.UserName ?? string.Empty,
+                Email = user.Email ?? string.Empty,
                 Role = role,
                 Token = token
             };

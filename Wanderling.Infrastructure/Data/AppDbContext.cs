@@ -3,8 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Wanderling.Infrastructure.Entities;
 using Wanderling.Domain.Entities.Collections.Plants;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Wanderling.Domain.Entities.Collections.Funguses;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Wanderling.Infrastructure.Data
 {
@@ -39,17 +39,22 @@ namespace Wanderling.Infrastructure.Data
                 }
             };
 
+            // filling the role table with initial data when performing migrations
             builder.Entity<IdentityRole<Guid>>().HasData(roles);
 
+            // Set primary key
             builder.Entity<UserPlantEntity>().HasKey(p => p.Id);
+
             builder.Ignore<Plant>();
 
+            // Ignore all Plants
             var plantTypes = Assembly.GetAssembly(typeof(Plant)).GetTypes()
                 .Where(t => t.IsSubclassOf(typeof(Plant)) && !t.IsAbstract);
 
             foreach (var type in  plantTypes)
                 builder.Ignore(type);
 
+            // Ignore all Funguses
             var fungusTypes = Assembly.GetAssembly(typeof(Fungus)).GetTypes()
                 .Where(t => t.IsSubclassOf(typeof(Fungus)) && !t.IsAbstract);
 

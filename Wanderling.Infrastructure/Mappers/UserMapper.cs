@@ -15,7 +15,6 @@ namespace Wanderling.Infrastructure.Mappers
                 PasswordHash = userDomain.PasswordHash,
                 PhoneNumber = userDomain.PhoneNumber,
                 CreatedAt = userDomain.CreatedAt,
-
             };
         }
 
@@ -25,13 +24,14 @@ namespace Wanderling.Infrastructure.Mappers
                 userEntity?.UserName ?? string.Empty,
                 userEntity?.Email ?? string.Empty,
                 userEntity?.PasswordHash ?? string.Empty,
-                "User"
+                "User",
+                userEntity?.CreatedAt ?? DateTime.MinValue
             );
 
             userDomain.AssignPhone(userEntity?.PhoneNumber ?? string.Empty);
             userDomain.FirstName = userEntity?.FirstName ?? string.Empty;
             userDomain.SecondName = userEntity?.SecondName ?? string.Empty;
-            userDomain.CreatedAt = userEntity?.CreatedAt ?? DateTime.MinValue;
+            //userDomain.CreatedAt = userEntity?.CreatedAt ?? DateTime.MinValue;
 
             return userDomain;
         }

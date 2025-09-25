@@ -7,7 +7,7 @@ namespace Wanderling.Application.Mappers
 {
     public static class PlantMapper
     {
-        public static UserPlantModel ToModel(this Plant plant)
+        public static UserPlantModel ToUserPlantModel(this Plant plant)
         {
             var type = plant.GetType();
             var metadata = type.GetCustomAttribute<PlantMetadataAttribute>();

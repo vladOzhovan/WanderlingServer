@@ -1,5 +1,8 @@
 ﻿namespace Wanderling.Application.Models
 {
+    /// <summary>
+    /// Model of a Plant identified from a photograph
+    /// </summary>
     public class PlantIdentifiedModel
     {
         public Guid Id { get; set; }

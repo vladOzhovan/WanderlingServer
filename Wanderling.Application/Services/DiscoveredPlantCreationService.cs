@@ -10,6 +10,13 @@ using Wanderling.Domain.Entities.Collections.Plants;
 
 namespace Wanderling.Application.Services
 {
+    /// <summary>
+    /// Provides functionality for processing uploaded plant images, identifying plants using a recognition service, 
+    /// and creating corresponding plant models in the system.
+    /// </summary>
+    /// <remarks>This service integrates with a plant recognition API to identify plants based on uploaded
+    /// images.  It validates the identified plant against a predefined registry and creates a plant entity if the plant
+    /// is recognized. The service also associates the created plant with a user.</remarks>
     public class DiscoveredPlantCreationService : IDiscoveredPlantCreationService
     {
         private readonly IMemoryCache _cache;
@@ -34,11 +41,18 @@ namespace Wanderling.Application.Services
 
         private const string PlantsRegisterCacheKey = "PlantsRegister";
 
+        /// <summary>
+        /// Loads and returns the plant registry from plantsRegister.json
+        /// </summary>
+        /// <returns>A Lists of <see cref="PlantDefinition"/> objects loaded from the registry</returns>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
         private List<PlantDefinition>? GetPlantsRegister()
         {
             var plantsReg = _cache.GetOrCreate(PlantsRegisterCacheKey, entry =>
             {
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10);
+
                 var path = Path.Combine(AppContext.BaseDirectory, "Resources", "plantsRegister.json");
 
                 try
@@ -69,12 +83,19 @@ namespace Wanderling.Application.Services
 
             return plantsReg;
         }
-
+        /// <summary>
+        /// Processes an uploaded image, sends it to the recognition service and returns an identified plant model 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="userId"></param>
+        /// <returns cref="PlantIdentifiedModel"></returns>
+        /// <exception cref="InvalidOperationException"></exception>
+        /// <exception cref="Exception"></exception>
         public async Task<PlantIdentifiedModel> CreateDiscoveredAsync(IFormFile image, Guid userId)
         {
-            using var ms = new MemoryStream();
-            await image.CopyToAsync(ms);
-            var imageBytes = ms.ToArray();
+            using var memoryStream = new MemoryStream();
+            await image.CopyToAsync(memoryStream);
+            var imageBytes = memoryStream.ToArray();
 
             var apiResponseJson = await _recognitionService.IdentifyPlantAsync(imageBytes);
 
@@ -82,6 +103,7 @@ namespace Wanderling.Application.Services
 
             try
             {
+                // Deserialize the response we got from the IPlantRecognitionService
                 responseResult = JsonSerializer.Deserialize<PlantApiResponse>(apiResponseJson, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
@@ -97,15 +119,18 @@ namespace Wanderling.Application.Services
 
             if (string.IsNullOrWhiteSpace(plantScientificName))
                 throw new Exception("Unknown plant");
-            
-            List<PlantDefinition>? register = GetPlantsRegister();
 
+            // Forming a register from plantsRegister.json
+            var register = GetPlantsRegister();
+
+            // Getting Plant definition from the register
             var definition = register?.FirstOrDefault(p => 
                 string.Equals(p.ScientificName, plantScientificName, StringComparison.OrdinalIgnoreCase));
 
             if (definition == null)
                 throw new Exception($"Plant '{plantScientificName}' not found in registry");
 
+            // Creating a Plant model for the IPlantCreationService
             var model = new PlantCreateModel
             {
                 SpeciesKey = plantScientificName,
@@ -113,24 +138,20 @@ namespace Wanderling.Application.Services
                 ReproductionKey = definition.Reproduction
             };
 
+            // Creating a Plant Domain entity
             var plant = await _creationService.CreatePlantAsync(model) as Plant;
 
             if (plant != null)
-            {
                 plant.Discover(userId);
-            }
             else
-            {
                 throw new Exception("Failed to create plant");
-            }
-                
 
             var identifiedPlant = plant.ToPlantIdentifiedModel();
 
             if (identifiedPlant == null)
                 throw new Exception($"Failed to convert from {typeof(Plant)} to {typeof(PlantIdentifiedModel)}");
 
-            var userPlantModel = plant.ToModel();
+            var userPlantModel = plant.ToUserPlantModel();
 
             if (userPlantModel == null)
                 throw new Exception($"Failed to convert from {typeof(PlantIdentifiedModel)} to {typeof(UserPlantModel)}");

@@ -15,7 +15,6 @@ using Wanderling.Infrastructure.Factories;
 using Wanderling.Infrastructure.Repositories;
 using Wanderling.Infrastructure.Services;
 
-
 namespace Wanderling.Api.DependencyInjection
 {
     public static class ServiceCollectionExtensions

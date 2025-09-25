@@ -3,6 +3,12 @@ using Wanderling.Application.Interfaces;
 
 namespace Wanderling.Infrastructure.Services
 {
+    /// <summary>
+    /// Provides functionality for identifying plants based on images by interacting with an external API.
+    /// </summary>
+    /// <remarks>This service is designed to facilitate plant identification by sending images to a
+    /// third-party API.  It requires an API key and a valid API URL to function. The service is intended for scenarios
+    /// where  plant recognition is needed, such as in gardening, agriculture, or educational applications.</remarks>
     public class PlantRecognitionService : IPlantRecognitionService
     {
         private readonly HttpClient _httpClient;
@@ -16,6 +22,14 @@ namespace Wanderling.Infrastructure.Services
             _apiUrl = apiUrl;
         }
 
+        /// <summary>
+        /// Identifies a plant based on the provided image.
+        /// </summary>
+        /// <remarks>This method sends the provided image to an external API for plant identification. 
+        /// Ensure that the image is in the correct format and that the API key is properly configured.</remarks>
+        /// <param name="plantImage">A byte array representing the image of the plant to be identified. The image must be in JPEG format.</param>
+        /// <returns>A JSON string containing the identification results, including details about the plant. The structure of the
+        /// JSON depends on the API response.</returns>
         public async Task<string> IdentifyPlantAsync(byte[] plantImage)
         {
             using var content = new MultipartFormDataContent();

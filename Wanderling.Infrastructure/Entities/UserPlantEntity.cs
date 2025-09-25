@@ -2,6 +2,9 @@
 
 namespace Wanderling.Infrastructure.Entities
 {
+    /// <summary>
+    /// Entity for a DB
+    /// </summary>
     public class UserPlantEntity
     {
         public Guid Id { get; set; }

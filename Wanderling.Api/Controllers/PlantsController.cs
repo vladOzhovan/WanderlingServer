@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Wanderling.Api.Dtos;
-using Wanderling.Application.Interfaces;
-using Wanderling.Application.Mappers;
+﻿using Wanderling.Api.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using Wanderling.Application.Models;
+using Wanderling.Application.Mappers;
+using Wanderling.Application.Interfaces;
 using Wanderling.Domain.Entities.Collections.Plants;
-using Wanderling.Infrastructure.Extensions;
 
 namespace Wanderling.Api.Controllers
 {
@@ -26,7 +24,7 @@ namespace Wanderling.Api.Controllers
         {
             //var userId = User.GetUserId();
             var userId = Guid.NewGuid();
-            var result = await _discoveredPlantCreationService.CreateDiscoveredAsync(request.image, userId);
+            var result = await _discoveredPlantCreationService.CreateDiscoveredAsync(request.Image, userId);
 
             if (result == null)
                 return BadRequest("Plant not recognized");
