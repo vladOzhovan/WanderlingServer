@@ -1,0 +1,100 @@
+﻿// Wanderling.Infrastructure/Resourses/Items/plantsInventoryReg.json
+[
+  {
+    "Key": "plant.taraxacum_ceratophorum",
+    "NameKey": "Horned Dandelion",
+    "ItemType": "Plant",
+    "Droppable": true,
+    "Tradeable": true,
+    "Weight": 0.1,
+    "Tags": [ "common", "flower crown", "fluffy", "herb" ]
+  },
+  {
+    "Key": "plant.matricaria_chamomilla",
+    "NameKey": "Chamomile",
+    "ItemType": "Plant",
+    "Droppable": true,
+    "Tradeable": true,
+    "Weight": 0.1,
+    "Tags": [ "plant", "herb", "medicinal", "wild" ]
+  },
+  {
+    "Key": "plant.taraxacum_officinale",
+    "NameKey": "Common Dandelion",
+    "ItemType": "Plant",
+    "Droppable": true,
+    "Tradeable": true,
+    "Weight": 0.1,
+    "Tags": [ "common", "edible", "yellow", "puff" ]
+  },
+  {
+    "Key": "plant.trifolium_repens",
+    "NameKey": "White Clover",
+    "ItemType": "Plant",
+    "Weight": 0.1,
+    "Tags": [ "luck", "magical", "meadow", "mysterious" ]
+  },
+  {
+    "Key": "plant.rosa_rugosa",
+    "NameKey": "Rose",
+    "ItemType": "Plant",
+    "Weight": 0.1,
+    "Tags": [ "flowering", "medicinal", "shrub", "wild" ]
+  },
+  {
+    "Key": "plant.solanum_melongena",
+    "NameKey": "Eggplant",
+    "ItemType": "Plant",
+    "Weight": 0.1,
+    "Tags": [ "edible", "medicinal", "purple", "vegetable", "house plant" ]
+  },
+  {
+    "Key": "plant.achillea_millefolium",
+    "NameKey": "Common Yarrow",
+    "ItemType": "Plant",
+    "Weight": 0.1,
+    "Tags": [ "medicinal", "wildflower", "pollinator", "herb" ]
+  },
+  {
+    "Key": "plant.urtica_dioica",
+    "NameKey": "Stinging Nettle",
+    "ItemType": "Plant",
+    "Weight": 0.1,
+    "Tags": [ "wild", "edible", "stinging", "nutritious" ]
+  },
+  {
+    "Key": "plant.bellis_perennis",
+    "NameKey": "Common Daisy",
+    "ItemType": "Plant",
+    "Weight": 0.1,
+    "Tags": [ "lawn", "flower", "edible", "cheerful" ]
+  },
+  {
+    "Key": "plant.quercus_robur",
+    "NameKey": "English Oak",
+    "ItemType": "Plant",
+    "Weight": 0.1,
+    "Tags": [ "tree", "acorn", "strong", "forest" ]
+  },
+  {
+    "Key": "plant.fagus_sylvatica",
+    "NameKey": "European Beech",
+    "ItemType": "Plant",
+    "Weight": 0.1,
+    "Tags": [ "tree", "shade", "forest", "hardwood" ]
+  },
+  {
+    "Key": "plant.cirsium_vulgare",
+    "NameKey": "Spear Thistle",
+    "ItemType": "Plant",
+    "Weight": 0.1,
+    "Tags": [ "thistle", "spiny", "wild", "purple" ]
+  },
+  {
+    "Key": "plant.ulex_europaeus",
+    "NameKey": "Common Gorse",
+    "ItemType": "Plant",
+    "Weight": 0.1,
+    "Tags": [ "evergreen", "yellow", "wild", "shrub" ]
+  }
+]

@@ -58,12 +58,7 @@
         "BaseDuration": 70
       }
     ],
-    "Tags": [
-      "common",
-      "edible",
-      "yellow",
-      "puff"
-    ]
+    "Tags": [ "common", "edible", "yellow", "puff" ]
   },
   {
     "ScientificName": "Taraxacum dissectum",

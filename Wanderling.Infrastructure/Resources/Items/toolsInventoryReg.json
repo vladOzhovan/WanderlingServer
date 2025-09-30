@@ -1,0 +1,11 @@
+﻿[
+  {
+    "Key": "tool.hammer",
+    "NameKey": "Hummer",
+    "ItemType": "Tool",
+    "Dropable": true,
+    "Tradable": true,
+    "Weight": 0.5,
+    "Tags": []
+  },
+]

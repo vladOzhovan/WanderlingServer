@@ -40,6 +40,8 @@
   </ItemGroup>
 
   <ItemGroup>
+	<Content Include="Resources\Items\.out\items.index.json" />
+	<Content Include="Resources\Items\.out\items.manifest.json" />
 	<Content Include="Resources\plantsRegister.json">
 		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	</Content>

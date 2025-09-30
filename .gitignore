@@ -37,3 +37,6 @@ appsettings.*.json
 
 # macOS
 .DS_Store
+
+# Generated folders anywhere
+**/.out/
