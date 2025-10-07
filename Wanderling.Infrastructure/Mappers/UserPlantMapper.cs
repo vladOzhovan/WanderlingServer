@@ -3,7 +3,7 @@ using Wanderling.Infrastructure.Entities;
 
 namespace Wanderling.Infrastructure.Mappers
 {
-    public static class PlantMapper
+    public static class UserPlantMapper
     {
         public static UserPlantEntity ToEntity(this UserPlantModel model)
         {

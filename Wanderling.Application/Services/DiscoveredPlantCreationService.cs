@@ -151,7 +151,7 @@ namespace Wanderling.Application.Services
             if (identifiedPlant == null)
                 throw new Exception($"Failed to convert from {typeof(Plant)} to {typeof(PlantIdentifiedModel)}");
 
-            var userPlantModel = plant.ToUserPlantModel();
+            var userPlantModel = PlantMapper.ToUserPlantModel(plant);
 
             if (userPlantModel == null)
                 throw new Exception($"Failed to convert from {typeof(PlantIdentifiedModel)} to {typeof(UserPlantModel)}");

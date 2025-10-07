@@ -44,6 +44,7 @@ namespace Wanderling.Api.Controllers
 
             var plant = await service.CreatePlantAsync(model) as Plant;
 
+
             if (plant == null)
                 return BadRequest("Failed to create plant");
 

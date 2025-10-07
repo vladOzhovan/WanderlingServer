@@ -11,9 +11,9 @@ namespace Wanderling.Domain.Entities.Inventory
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public List<InventoryItem> Items { get; set; } = new();
-        public float MaxWeight { get; set; } = 100;
-        public float CurrentWeight => Items.Sum(i => i.TotalWeight);
-        public bool Overencumbered => CurrentWeight > MaxWeight;
+        public decimal MaxWeight { get; set; } = 100;
+        public decimal CurrentWeight => Items.Sum(i => i.TotalWeight);
+        public bool Overloaded => CurrentWeight > MaxWeight;
 
         public AddItemResult AddItem(ItemDefinition definition, int quantity)
         {
@@ -25,18 +25,17 @@ namespace Wanderling.Domain.Entities.Inventory
                 return AddItemResult.Fail(InventoryError.InvalidQuantity);
 
             // Weight check
-            var deltaWeight = definition.Weight * quantity;
-            var prospectiveWeight = CurrentWeight + deltaWeight;
+            var addWeight = definition.Weight * quantity;
+            var prospectiveWeight = CurrentWeight + addWeight;
 
             if (prospectiveWeight > MaxWeight)
                 return AddItemResult.Fail(InventoryError.ExceedsWeightLimit, prospectiveWeight);
 
-            // Merge with an existing stack (same definition)
+            // Merge with an existing stack
             var stack = Items.FirstOrDefault(i => i.Item.Id == definition.Id);
 
             if (stack is not null)
             {
-                // TODO: enforce MaxStack policy here
                 checked { stack.Quantity += quantity; } // prevent silent overflow
                 // TODO: raise domain event ItemAdded / InventoryChanged
                 return AddItemResult.Ok(stack.ToDto(), quantity, prospectiveWeight);
@@ -54,6 +53,40 @@ namespace Wanderling.Domain.Entities.Inventory
             Items.Add(newItem);
             // TODO: raise domain event ItemAdded / InventoryChanged
             return AddItemResult.Ok(newItem.ToDto(), quantity, prospectiveWeight);
-        }        
+        }
+
+        public RemoveItemResult RemoveItem(Guid itemInstanceId, int quantity)
+        {
+            // Guard clauses
+            if (quantity < 0)
+                return RemoveItemResult.Fail(InventoryError.InvalidQuantity);
+
+            var stack = Items.FirstOrDefault(i => i.Id == itemInstanceId);
+
+            if (stack is null)
+                return RemoveItemResult.Fail(InventoryError.ItemNotFound);
+
+            // Policy: clamp removal to available quantity
+            var removeQuantity = Math.Min(quantity, stack.Quantity);
+
+            // Compute new weight BEFORE mutating collection
+            var prospectiveWeight = CurrentWeight - (stack.Item.Weight * removeQuantity);
+            if (prospectiveWeight < 0) prospectiveWeight = 0;
+
+            if (removeQuantity == stack.Quantity)
+            {
+                // remove whole stack
+                Items.Remove(stack);
+
+                // no DTO because instance no longer exists
+                return RemoveItemResult.Ok(null, removeQuantity, prospectiveWeight);
+            }
+
+            // decrease quantity (no overflow risk because 0 <= removeQty <= stack.Quantity)
+            stack.Quantity -= removeQuantity;
+
+            // NOTE: domain events (ItemRemoved/InventoryChanged) will be added later
+            return RemoveItemResult.Ok(stack.ToDto(), removeQuantity, prospectiveWeight);
+        }
     }
 }

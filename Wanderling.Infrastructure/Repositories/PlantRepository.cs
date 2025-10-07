@@ -27,5 +27,11 @@ namespace Wanderling.Infrastructure.Repositories
             await _context.UserPlants.AddAsync(model.ToEntity());
             await _context.SaveChangesAsync();
         }
+
+        public async Task AddToAll(CommonPlamtModel model)
+        {
+            await _context.AllPlants.AddAsync(model.ToEntity());
+            await _context.SaveChangesAsync();
+        }
     }
 }

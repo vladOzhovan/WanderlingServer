@@ -4,8 +4,8 @@
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
-        public ItemDefinition Item { get; set; } = new();
         public int Quantity { get; set; }
-        public float TotalWeight => Item.Weight * Quantity;
+        public decimal TotalWeight => Item.Weight * Quantity;
+        public ItemDefinition Item { get; set; } = new();
     }
 }

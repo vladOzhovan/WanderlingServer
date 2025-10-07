@@ -26,7 +26,7 @@ namespace Wanderling.Application.Mappers
             };
         }
 
-        public static UserPlantModel ToPlantModel(this Plant plant)
+        public static UserPlantModel ToUserPlantModel(this Plant plant)
         {
             var type = plant.GetType();
             var metadata = type.GetCustomAttribute<PlantMetadataAttribute>();

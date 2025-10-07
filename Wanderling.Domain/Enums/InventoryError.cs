@@ -5,6 +5,7 @@
         None,
         InvalidDefinition,
         InvalidQuantity,
-        ExceedsWeightLimit
+        ExceedsWeightLimit,
+        ItemNotFound
     }
 }
