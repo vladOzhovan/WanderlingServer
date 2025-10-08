@@ -20,15 +20,7 @@
         public string? PhoneNumber { get; private set; }
         public string? FirstName { get; set; }
         public string? SecondName { get; set; }
-        public string? FullName
-        {
-            get
-            {
-                var first = FirstName ?? string.Empty;
-                var second = SecondName ?? string.Empty;
-                return $"{first} {second}".Trim();
-            }
-        }
+        public string? FullName => $"{FirstName ?? string.Empty} {SecondName ?? string.Empty}".Trim();
 
         public static UserDomain Create(string userName, string email, string passwordHash, string role, DateTime createdAt) =>
             new UserDomain(userName, email, passwordHash, role, createdAt);
